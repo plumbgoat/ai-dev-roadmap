@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI-Augmented Developer — a skill tree for building with AI</title>
+<meta name="description" content="Level up from prompting to building AI into production. A gamified skill tree of 27 skills across 6 tiers, each with hand-picked courses, papers, and docs. Earn XP, climb the ranks.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The AI-Augmented Developer — Skill Tree">
+<meta property="og:description" content="Level up from 'I use AI sometimes' to building AI into production. 27 skills, 6 tiers, earn XP and climb the ranks.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The AI-Augmented Developer Skill Tree">
+<meta name="twitter:description" content="A gamified path to building with AI — earn XP, level up, with a resource at every skill.">
+<style>
+  :root {
+    --paper:#F6F6FB;--paper-2:#ECECF5;--ink:#17151F;--muted:#5F5B70;--line:#DEDCEA;--card:#FFFFFF;
+    --accent:#5B46D9;--accent-ink:#4A38C2;--accent-soft:rgba(91,70,217,0.09);--accent-line:rgba(91,70,217,0.26);
+    --gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);
+    --shadow:0 1px 2px rgba(23,21,31,0.04),0 12px 32px -18px rgba(23,21,31,0.24);
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper:#0F0E16;--paper-2:#17161F;--ink:#E9E7F0;--muted:#948EA8;--line:#262433;--card:#171520;
+      --accent:#8E7BF5;--accent-ink:#A493F8;--accent-soft:rgba(142,123,245,0.14);--accent-line:rgba(142,123,245,0.34);
+      --gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);
+      --shadow:0 1px 2px rgba(0,0,0,0.3),0 16px 40px -20px rgba(0,0,0,0.65);}
+  }
+  :root[data-theme="light"]{--paper:#F6F6FB;--paper-2:#ECECF5;--ink:#17151F;--muted:#5F5B70;--line:#DEDCEA;--card:#FFFFFF;--accent:#5B46D9;--accent-ink:#4A38C2;--accent-soft:rgba(91,70,217,0.09);--accent-line:rgba(91,70,217,0.26);--gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);}
+  :root[data-theme="dark"]{--paper:#0F0E16;--paper-2:#17161F;--ink:#E9E7F0;--muted:#948EA8;--line:#262433;--card:#171520;--accent:#8E7BF5;--accent-ink:#A493F8;--accent-soft:rgba(142,123,245,0.14);--accent-line:rgba(142,123,245,0.34);--gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);}
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .wrap { font-family: var(--sans); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.55; padding: clamp(1.2rem,4vw,2.6rem) 1.2rem 4rem; min-height: 100vh; }
+  .inner { max-width: 1040px; margin: 0 auto; }
+
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 0.9rem; display: flex; align-items: center; gap: 0.6rem; }
+  .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
+  h1 { font-size: clamp(2rem,5.5vw,3.4rem); line-height: 1.03; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 0.7rem; text-wrap: balance; max-width: 17ch; }
+  h1 .g { color: var(--accent-ink); }
+  .lede { font-size: clamp(1rem,2.2vw,1.18rem); color: var(--muted); max-width: 46ch; margin: 0 0 1.4rem; }
+
+  /* HUD player card */
+  .hud { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.2rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  .hud::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--accent), var(--gold)); }
+  .hud .rank-wrap { min-width: 0; }
+  .hud .rank-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .hud .rank { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 0.1rem; }
+  .lvl-badge { flex: 0 0 auto; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 12px; background: var(--gold-soft); border: 1px solid var(--gold-line); text-align: center; line-height: 1; }
+  .lvl-badge .l { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.14em; color: var(--gold-ink); }
+  .lvl-badge .n { font-size: 1.35rem; font-weight: 800; color: var(--gold-ink); }
+  .xp { flex: 1 1 240px; min-width: 200px; }
+  .xp-top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .xp-top b { color: var(--gold-ink); }
+  .xp-bar { height: 10px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 100px; overflow: hidden; }
+  .xp-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 100px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+  .reset { font-family: var(--mono); font-size: 0.66rem; background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 6px; padding: 0.2rem 0.5rem; cursor: pointer; align-self: center; }
+  .reset:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+  .switch { display: inline-flex; background: var(--paper-2); border: 1px solid var(--line); border-radius: 100px; padding: 4px; gap: 2px; margin: 1.4rem 0 0.3rem; }
+  .switch button { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; border: none; background: transparent; color: var(--muted); padding: 0.5rem 1.05rem; border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; transition: all 0.18s ease; }
+  .switch button:hover { color: var(--ink); }
+  .switch button.on { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
+
+  /* skill tree */
+  #treeView { margin-top: 1.2rem; }
+  .tier { margin-top: 2.4rem; }
+  .tier:first-of-type { margin-top: 1rem; }
+  .tier-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.9rem; }
+  .tier-badge { flex: 0 0 auto; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 11px; background: var(--accent-soft); border: 1px solid var(--accent-line); line-height: 1; }
+  .tier-badge .l { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.12em; color: var(--accent-ink); }
+  .tier-badge .n { font-size: 1.15rem; font-weight: 800; color: var(--accent-ink); }
+  .tier.complete .tier-badge { background: var(--gold-soft); border-color: var(--gold-line); box-shadow: 0 0 0 3px var(--gold-soft); }
+  .tier.complete .tier-badge .l, .tier.complete .tier-badge .n { color: var(--gold-ink); }
+  .tier-title { flex: 1 1 auto; min-width: 0; }
+  .tier-title h2 { margin: 0; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .tier-title p { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.88rem; }
+  .tier-prog { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); white-space: nowrap; }
+  .tier.complete .tier-prog { color: var(--gold-ink); font-weight: 700; }
+
+  .skill { display: grid; grid-template-columns: 52px 1fr; gap: 0 1rem; position: relative; padding: 0.55rem 0; }
+  .skill::before { content: ""; position: absolute; left: 25px; top: 0; bottom: 0; width: 2px; background: var(--accent-line); }
+  .skill:last-child::before { bottom: auto; height: 30px; }
+  .orb { position: relative; z-index: 1; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 0.9rem; color: var(--accent-ink); background: var(--card); border: 2px solid var(--accent-line); box-shadow: 0 0 0 4px var(--paper); cursor: pointer; user-select: none; transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+  .orb:hover { transform: scale(1.07); border-color: var(--accent); }
+  .skill.learned .orb { background: var(--gold); border-color: var(--gold); color: #fff; box-shadow: 0 0 0 4px var(--paper), 0 0 18px -2px var(--gold); }
+  .skill.learned .orb .ntxt { display: none; }
+  .skill.learned .orb::after { content: "✓"; color: #fff; font-size: 1.2rem; font-weight: 800; }
+  .s-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0.95rem 1.15rem 1.05rem; box-shadow: var(--shadow); transition: border-color 0.25s ease; }
+  .skill.learned .s-card { border-color: var(--gold-line); }
+  .s-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+  .s-card h3 { margin: 0 0 0.4rem; font-size: 1.1rem; letter-spacing: -0.01em; }
+  .skill.learned .s-card h3 { color: var(--muted); }
+  .xp-tag { font-family: var(--mono); font-size: 0.64rem; color: var(--gold-ink); background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 6px; padding: 0.1rem 0.4rem; white-space: nowrap; }
+  .s-card p { margin: 0; font-size: 0.93rem; color: var(--muted); line-height: 1.5; }
+  .learn { margin-top: 0.8rem; }
+  .learn-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.4rem; }
+  .res-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .res { font-family: var(--sans); font-size: 0.78rem; text-decoration: none; color: var(--accent-ink); border: 1px solid var(--accent-line); border-radius: 8px; padding: 0.3rem 0.56rem; transition: all 0.15s ease; display: inline-flex; align-items: center; gap: 0.32rem; }
+  .res::before { content: "↗"; font-size: 0.78em; opacity: 0.6; }
+  .res:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .res.tool { background: var(--accent-soft); font-weight: 600; }
+  .res.tool::before { content: "◆"; opacity: 0.9; }
+
+  /* max-rank banner */
+  .maxed { margin-top: 2rem; display: none; align-items: center; gap: 0.9rem; background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 14px; padding: 1rem 1.2rem; }
+  .maxed.show { display: flex; }
+  .maxed .m-badge { font-size: 1.6rem; }
+  .maxed h3 { margin: 0; color: var(--gold-ink); font-size: 1.05rem; }
+  .maxed p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+  /* mind map */
+  .mm-scroll { margin-top: 1.2rem; overflow: auto; border: 1px solid var(--line); border-radius: 16px; background: radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0) 0 0 / 22px 22px, var(--card); }
+  .mm-cols { position: relative; display: flex; align-items: stretch; gap: clamp(38px,6vw,100px); padding: clamp(20px,3vw,40px); min-width: max-content; min-height: 520px; }
+  .mm-links { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .mm-col { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .mm-node { background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+  .mm-root { align-self: center; padding: 1rem 1.15rem; max-width: 180px; text-align: center; font-weight: 800; font-size: 1.02rem; line-height: 1.15; border-color: var(--accent); box-shadow: var(--shadow), 0 0 0 1px var(--accent); }
+  .mm-root .rk { display: block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 0.4rem; font-weight: 700; }
+  .mm-leg { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 0.9rem; width: 236px; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease; }
+  .mm-leg:hover { transform: translateX(2px); border-color: var(--accent-line); }
+  .mm-leg .mk { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 0.76rem; color: var(--accent-ink); background: var(--accent-soft); border: 1px solid var(--accent-line); }
+  .mm-leg h3 { margin: 0; font-size: 0.94rem; letter-spacing: -0.01em; }
+  .mm-leg span { font-size: 0.71rem; color: var(--muted); }
+  .mm-leg.active { border-color: var(--accent); background: var(--accent-soft); box-shadow: var(--shadow), 0 0 0 1px var(--accent); }
+  .mm-leg.active .mk { background: var(--accent); color: #fff; }
+  .mm-stop { padding: 0.75rem 0.9rem; width: 300px; }
+  .mm-stop .st { display: flex; align-items: baseline; gap: 0.5rem; }
+  .mm-stop .sn { font-family: var(--mono); font-size: 0.72rem; color: var(--accent-ink); font-weight: 700; }
+  .mm-stop.done .sn::after { content: " ✓"; color: var(--gold-ink); }
+  .mm-stop h4 { margin: 0; font-size: 0.95rem; letter-spacing: -0.01em; }
+  .mm-stop .res-row { margin-top: 0.55rem; }
+  .stops-wrap { display: flex; flex-direction: column; gap: 12px; animation: fade 0.35s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .orb, .mm-leg { transition: none; } .stops-wrap { animation: none; } }
+  @media (max-width: 560px) { .skill { grid-template-columns: 44px 1fr; gap: 0 0.8rem; } .skill::before { left: 21px; } .orb { width: 44px; height: 44px; font-size: 0.82rem; } }
+
+  footer { max-width: 1040px; margin: 3rem auto 0; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.83rem; line-height: 1.6; }
+  footer .mono { font-family: var(--mono); }
+</style>
+<script data-goatcounter="https://plumbgoat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="inner">
+
+    <p class="eyebrow">A skill tree for builders</p>
+    <h1>Level up as an <span class="g">AI-Augmented</span> Developer</h1>
+    <p class="lede">27 skills, 6 tiers — from how the model works to shipping AI in production. Learn a skill, earn XP, climb the ranks.</p>
+
+    <div class="hud">
+      <div class="lvl-badge"><div><span class="l">LVL</span><br><span class="n" id="hudLvl">1</span></div></div>
+      <div class="rank-wrap">
+        <div class="rank-label">Rank</div>
+        <div class="rank" id="hudRank">Prompt-Curious</div>
+      </div>
+      <div class="xp">
+        <div class="xp-top"><span id="xpText">0 / 27 skills</span><span id="nextText"></span></div>
+        <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+      </div>
+      <button class="reset" id="preset" type="button">Reset</button>
+    </div>
+
+    <div class="switch" role="group" aria-label="Choose view">
+      <button id="btnTree" class="on" type="button">🌳 Skill tree</button>
+      <button id="btnMap" type="button">🧠 Mind map</button>
+    </div>
+
+    <main id="treeView"></main>
+
+    <div id="mapView" hidden>
+      <div class="mm-scroll">
+        <div class="mm-cols" id="cols">
+          <svg class="mm-links" id="links"></svg>
+          <div class="mm-col"><div class="mm-node mm-root"><span class="rk">Start here</span>AI-Augmented Developer</div></div>
+          <div class="mm-col" id="legCol"></div>
+          <div class="mm-col" id="stopCol"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p><span class="mono">the ai-augmented developer skill tree</span> — resources are curated starting points, not an exhaustive syllabus. Skills marked <b>◆</b> link to small tools I built (plumbgoat). Your progress is saved in this browser.</p>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+  var STAGES = [
+    { mark:"I", title:"Foundations", sub:"how the model works", stops:[
+      { n:"01", h:"What an LLM actually is", d:"Tokens, the context window, next-token prediction, and why it hallucinates and gives \"almost right\" answers. A mental model of how it predicts text explains most of its behavior.", res:[{l:"Karpathy — Intro to LLMs",u:"https://www.youtube.com/@AndrejKarpathy"},{l:"3Blue1Brown — But what is a GPT?",u:"https://www.youtube.com/@3blue1brown"}] },
+      { n:"02", h:"Transformers & attention", d:"The architecture under every modern model: self-attention, why it beat RNNs, and how a stack of layers turns tokens into meaning. Go one level below the abstraction — it pays off everywhere later.", res:[{l:"The Illustrated Transformer",u:"https://jalammar.github.io/illustrated-transformer/"},{l:"Attention Is All You Need",u:"https://arxiv.org/abs/1706.03762"},{l:"Karpathy — Let's build GPT",u:"https://www.youtube.com/@AndrejKarpathy"}] },
+      { n:"03", h:"Training, base vs instruct, fine-tuning", d:"Pre-training vs instruction-tuning vs RLHF — why a base model completes text but an instruct model follows you. Where fine-tuning (and LoRA) fits, and where it doesn't.", res:[{l:"Hugging Face — LLM Course",u:"https://huggingface.co/learn"},{l:"LoRA (paper)",u:"https://arxiv.org/abs/2106.09685"}] },
+      { n:"04", h:"Tokenization & embeddings", d:"How text becomes tokens (and why that causes weird bugs), and how embeddings place meaning in vector space — the foundation of search, RAG, and \"similarity.\"", res:[{l:"Karpathy — Let's build the Tokenizer",u:"https://www.youtube.com/@AndrejKarpathy"},{l:"Pinecone — Embeddings & vectors",u:"https://www.pinecone.io/learn/"}] },
+      { n:"05", h:"Failure modes & limits", d:"Hallucination, the \"almost right but subtly wrong\" trap, context limits, and stale knowledge. Knowing when NOT to trust the output is the real skill — and what separates safe users from dangerous ones.", res:[{l:"Anthropic — Docs & guidance",u:"https://docs.claude.com"}] }
+    ]},
+    { mark:"II", title:"Prompting", sub:"mastery", stops:[
+      { n:"06", h:"Prompt engineering fundamentals", d:"State the task plainly, give context and an example, specify the exact output format, and always add an escape hatch (\"if you don't know, say so\"). That last line is the biggest defense against made-up answers.", res:[{l:"Anthropic — interactive prompt tutorial",u:"https://github.com/anthropics/prompt-eng-interactive-tutorial"},{l:"DeepLearning.AI — Prompting for Devs (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"prompt-forge — build & test prompts",u:"https://github.com/plumbgoat/prompt-forge",t:true}] },
+      { n:"07", h:"Advanced patterns", d:"Chain-of-thought for reasoning, ReAct for tool-using agents, few-shot for format, self-consistency for reliability. Know the named techniques and when each earns its cost in tokens.", res:[{l:"Prompt Engineering Guide",u:"https://www.promptingguide.ai"},{l:"Chain-of-Thought (paper)",u:"https://arxiv.org/abs/2201.11903"},{l:"ReAct (paper)",u:"https://arxiv.org/abs/2210.03629"}] },
+      { n:"08", h:"Structured & constrained output", d:"Getting reliable JSON, matching a schema, and tool/function schemas — so code downstream can actually parse what the model returns. The format IS the requirement when a machine consumes it.", res:[{l:"Anthropic — Tool use & structured output",u:"https://docs.claude.com/en/docs/build-with-claude/tool-use"}] },
+      { n:"09", h:"Context engineering", d:"What to put in the window and what to leave out: retrieval vs stuffing, ordering, and why more context isn't always better. Managing the window well is the difference between flaky and reliable.", res:[{l:"Prompt Engineering Guide",u:"https://www.promptingguide.ai"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] }
+    ]},
+    { mark:"III", title:"Code with AI", sub:"do it well", stops:[
+      { n:"10", h:"Pick your driver", d:"Claude Code, Cursor, Copilot, Windsurf. Understand the difference between an agent (plans and edits across files) and autocomplete (finishes the line), and when each fits the task.", res:[{l:"Claude Code docs",u:"https://code.claude.com/docs"},{l:"Cursor docs",u:"https://docs.cursor.com"}] },
+      { n:"11", h:"Work in the loop", d:"Plan → generate → review → verify. Never blind-accept a diff. The bottleneck of software moved from writing code to trusting it — your job now is verification, and it's where the value is.", res:[{l:"Anthropic — Claude Code best practices",u:"https://www.anthropic.com/engineering/claude-code-best-practices"}] },
+      { n:"12", h:"Debug with AI", d:"Feed it the real error and let it reason over your actual code, not a textbook guess about the exception. The best debugging happens when the model can read the files, not just the stack-trace text.", res:[{l:"rootcause — trace a crash to its cause",u:"https://github.com/plumbgoat/rootcause",t:true}] },
+      { n:"13", h:"Keep your edge", d:"AI can quietly erode your skills if you stop understanding what it writes. Rule of thumb: don't ship code you couldn't explain in review. Read the diff, learn the pattern, stay the engineer.", res:[] }
+    ]},
+    { mark:"IV", title:"Extend your agent", sub:"tools, skills, memory", stops:[
+      { n:"14", h:"MCP — connect real tools & data", d:"The Model Context Protocol is the universal way to plug your database, GitHub, Sentry, and more into an AI tool — the same server works across Claude Code, Cursor, and Windsurf. The biggest capability jump you can make.", res:[{l:"modelcontextprotocol.io — intro",u:"https://modelcontextprotocol.io"},{l:"Plugboard — the MCP servers worth using",u:"https://plumbgoat.github.io/ai-plugin-directory/",t:true}] },
+      { n:"15", h:"Skills, commands & plugins", d:"Package the things you keep re-explaining into reusable skills and slash commands, so your agent already knows your conventions every session instead of relearning them each time.", res:[{l:"Claude Code — Skills",u:"https://code.claude.com/docs/en/skills"}] },
+      { n:"16", h:"Build & ship your own plugin", d:"Bundle skills, commands, and hooks into a plugin, test it locally, and publish it to a marketplace. Going from consumer to author is the step that turns you into someone others learn from.", res:[{l:"Claude Code — Create plugins",u:"https://code.claude.com/docs/en/plugins"}] },
+      { n:"17", h:"Agents, subagents & orchestration", d:"Delegate multi-step work to specialized sub-agents (a reviewer, a researcher, a tester) and coordinate them. Just as important: learn when NOT to — more agents isn't always more done.", res:[{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"},{l:"Claude Code — Subagents",u:"https://code.claude.com/docs/en/sub-agents"}] },
+      { n:"18", h:"Hooks, automation & guardrails", d:"Wire deterministic checks into your workflow: run tests on save, block a commit with secrets, format on edit. Hooks are where you stop relying on the model to remember and make the system enforce it.", res:[{l:"Claude Code — Hooks",u:"https://code.claude.com/docs/en/hooks"}] }
+    ]},
+    { mark:"V", title:"Build into products", sub:"ship the model", stops:[
+      { n:"19", h:"Call the API", d:"The Messages API, choosing the right model for the job, how tokens and cost work, streaming responses, and prompt caching. Where \"AI feature\" stops being a chat window and becomes real software.", res:[{l:"Anthropic — API docs",u:"https://docs.claude.com/en/api"},{l:"DeepLearning.AI — short courses",u:"https://www.deeplearning.ai/short-courses/"}] },
+      { n:"20", h:"RAG, deep", d:"Beyond \"embed and search\": chunking strategy, hybrid (keyword + vector) retrieval, re-ranking, and evaluating retrieval quality. Most \"the AI is wrong\" bugs in products are actually retrieval bugs.", res:[{l:"DeepLearning.AI — Advanced RAG (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"Pinecone — Learn",u:"https://www.pinecone.io/learn/"},{l:"Hugging Face — Learn",u:"https://huggingface.co/learn"}] },
+      { n:"21", h:"Tool use & agentic architectures", d:"Function calling plus the loop — plan → act → observe → repeat — with memory and a stopping condition. Learn the failure modes: runaway loops, wrong tool, and no exit.", res:[{l:"Anthropic — Tool use",u:"https://docs.claude.com/en/docs/build-with-claude/tool-use"},{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"}] },
+      { n:"22", h:"Fine-tune vs prompt vs RAG", d:"The decision that saves (or wastes) the most money: when a better prompt is enough, when you need retrieval, and the rare cases fine-tuning actually earns its keep. Reach for the cheapest option that works.", res:[{l:"DeepLearning.AI — Finetuning LLMs (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] },
+      { n:"23", h:"Evaluation & observability (LLMOps)", d:"You can't improve what you don't measure. Build evals for output quality, trace real runs in production, and catch regressions before users do. This is the skill that separates demos from products.", res:[{l:"DeepLearning.AI — Evaluating GenAI",u:"https://www.deeplearning.ai/short-courses/"},{l:"Langfuse — observability",u:"https://langfuse.com"}] }
+    ]},
+    { mark:"VI", title:"Production & frontier", sub:"safely, and keep up", stops:[
+      { n:"24", h:"Cost, latency & scaling", d:"Prompt caching, batching, streaming, model routing (cheap model for easy calls, strong model for hard ones), and knowing your per-request cost. The difference between a fun demo and a viable product.", res:[{l:"Anthropic — Caching & pricing",u:"https://docs.claude.com"}] },
+      { n:"25", h:"Security & safety, in depth", d:"Prompt injection, jailbreaks, data exfiltration, and the fact that model output is untrusted input. Treat everything the model reads from the web or a document as potentially hostile.", res:[{l:"OWASP — LLM Top 10",u:"https://owasp.org/www-project-top-10-for-large-language-model-applications/"},{l:"Willison — Prompt injection",u:"https://simonwillison.net/tags/prompt-injection/"}] },
+      { n:"26", h:"Multimodal & computer use", d:"Vision (reading images, screenshots, PDFs), and agents that operate a real screen or browser. The interface is expanding past text — know what's now possible and where it's still brittle.", res:[{l:"Anthropic — Vision & computer use",u:"https://docs.claude.com"}] },
+      { n:"27", h:"Stay current", d:"The field genuinely moves monthly. Build a habit: follow a few sharp people, skim the papers that matter, and try new capabilities as they ship. The meta-skill that keeps all the others from going stale.", res:[{l:"Hugging Face — Papers",u:"https://huggingface.co/papers"},{l:"Simon Willison's blog",u:"https://simonwillison.net"},{l:"arXiv — cs.CL recent",u:"https://arxiv.org/list/cs.CL/recent"}] }
+    ]}
+  ];
+
+  var RANKS = [
+    { min:0,  lvl:1, title:"Prompt-Curious" },
+    { min:3,  lvl:2, title:"Prompt Apprentice" },
+    { min:6,  lvl:3, title:"Prompt Adept" },
+    { min:10, lvl:4, title:"AI-Assisted Dev" },
+    { min:14, lvl:5, title:"Agent Builder" },
+    { min:19, lvl:6, title:"AI Product Engineer" },
+    { min:24, lvl:7, title:"AI Systems Architect" },
+    { min:27, lvl:8, title:"Full-Stack AI Wizard" }
+  ];
+
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); };
+  function chips(res) {
+    if (!res || !res.length) return "";
+    return '<div class="res-row">' + res.map(function (r) {
+      return '<a class="res' + (r.t ? ' tool' : '') + '" href="' + r.u + '" target="_blank" rel="noopener">' + esc(r.l) + '</a>';
+    }).join("") + '</div>';
+  }
+
+  var DONE_KEY = "aidevtree-done-v1", done = {};
+  var TOTAL = STAGES.reduce(function (a, s) { return a + s.stops.length; }, 0);
+  try { (JSON.parse(localStorage.getItem(DONE_KEY)) || []).forEach(function (n) { done[n] = 1; }); } catch (e) {}
+  function saveDone() { try { localStorage.setItem(DONE_KEY, JSON.stringify(Object.keys(done).filter(function (k) { return done[k]; }))); } catch (e) {} }
+  function xpCount() { var c = 0; for (var k in done) if (done[k]) c++; return c; }
+  function updateHUD() {
+    var xp = xpCount(), cur = RANKS[0], next = null;
+    for (var i = 0; i < RANKS.length; i++) { if (xp >= RANKS[i].min) cur = RANKS[i]; else { next = RANKS[i]; break; } }
+    document.getElementById("hudLvl").textContent = cur.lvl;
+    document.getElementById("hudRank").textContent = cur.title;
+    document.getElementById("xpText").textContent = xp + " / " + TOTAL + " skills";
+    var fill, ntxt;
+    if (next) { fill = (xp - cur.min) / (next.min - cur.min) * 100; ntxt = (next.min - xp) + " to " + next.title; }
+    else { fill = 100; ntxt = "MAX RANK ★"; }
+    document.getElementById("xpFill").style.width = fill + "%";
+    document.getElementById("nextText").innerHTML = next ? esc(ntxt) : "<b>" + esc(ntxt) + "</b>";
+    // tier completion states
+    document.querySelectorAll("#treeView .tier").forEach(function (tier) {
+      var skills = tier.querySelectorAll(".skill"), learned = tier.querySelectorAll(".skill.learned").length;
+      tier.classList.toggle("complete", learned === skills.length && skills.length > 0);
+      var pr = tier.querySelector(".tier-prog"); if (pr) pr.textContent = learned + " / " + skills.length + (learned === skills.length ? " ✓" : "");
+    });
+  }
+
+  // ---- skill tree render ----
+  (function renderTree() {
+    var html = STAGES.map(function (st, ti) {
+      var skills = st.stops.map(function (s) {
+        var learn = s.res && s.res.length ? '<div class="learn"><span class="learn-label">Learn it</span>' + chips(s.res) + '</div>' : '';
+        return '<article class="skill reveal' + (done[s.n] ? ' learned' : '') + '" data-n="' + s.n + '">' +
+          '<div class="orb" role="button" tabindex="0" title="Mark learned"><span class="ntxt">' + s.n + '</span></div>' +
+          '<div class="s-card"><div class="s-top"><h3>' + esc(s.h) + '</h3><span class="xp-tag">+1 XP</span></div><p>' + esc(s.d) + '</p>' + learn + '</div></article>';
+      }).join("");
+      return '<section class="tier"><div class="tier-head reveal"><div class="tier-badge"><div><span class="l">LVL</span><br><span class="n">' + (ti + 1) + '</span></div></div>' +
+        '<div class="tier-title"><h2>' + esc(st.title) + '</h2><p>' + esc(st.sub) + '</p></div><span class="tier-prog"></span></div>' + skills + '</section>';
+    }).join("");
+    html += '<div class="maxed" id="maxed"><span class="m-badge">🏆</span><div><h3>Full-Stack AI Wizard — every skill unlocked.</h3><p>You went from pasting prompts to shipping AI in production. Now go build something only you could.</p></div></div>';
+    document.getElementById("treeView").innerHTML = html;
+    var els = document.querySelectorAll("#treeView .reveal");
+    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      [].forEach.call(els, function (e) { e.classList.add("in"); });
+    } else {
+      var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, { threshold: 0.08 });
+      [].forEach.call(els, function (e) { io.observe(e); });
+    }
+  })();
+
+  // ---- mind map render ----
+  var cols = document.getElementById("cols"), legCol = document.getElementById("legCol"), stopCol = document.getElementById("stopCol");
+  var svg = document.getElementById("links"), SVGNS = "http://www.w3.org/2000/svg", active = 0, mapBuilt = false;
+  legCol.innerHTML = STAGES.map(function (s, i) {
+    return '<div class="mm-node mm-leg" data-i="' + i + '"><div class="mk">' + s.mark + '</div><div><h3>' + esc(s.title) + '</h3><span>' + esc(s.sub) + '</span></div></div>';
+  }).join("");
+  function renderStops(i) {
+    stopCol.innerHTML = '<div class="stops-wrap">' + STAGES[i].stops.map(function (s) {
+      return '<div class="mm-node mm-stop' + (done[s.n] ? ' done' : '') + '" data-n="' + s.n + '"><div class="st"><span class="sn">' + s.n + '</span><h4>' + esc(s.h) + '</h4></div>' + chips(s.res) + '</div>';
+    }).join("") + '</div>';
+  }
+  function edge(el, side) { var b = cols.getBoundingClientRect(), r = el.getBoundingClientRect(); return { x: (side === "right" ? r.right : r.left) - b.left, y: (r.top + r.height / 2) - b.top }; }
+  function curve(a, b, strong) {
+    var dx = Math.max(30, (b.x - a.x) * 0.5), p = document.createElementNS(SVGNS, "path");
+    p.setAttribute("d", "M" + a.x + "," + a.y + " C" + (a.x + dx) + "," + a.y + " " + (b.x - dx) + "," + b.y + " " + b.x + "," + b.y);
+    p.setAttribute("fill", "none"); p.setAttribute("stroke", strong ? "var(--accent)" : "var(--accent-line)");
+    p.setAttribute("stroke-width", strong ? "2.4" : "1.4"); p.setAttribute("opacity", strong ? "1" : "0.5");
+    return p;
+  }
+  function draw() {
+    svg.setAttribute("width", cols.scrollWidth); svg.setAttribute("height", cols.scrollHeight);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var legs = legCol.querySelectorAll(".mm-leg"), rootR = edge(document.querySelector(".mm-root"), "right");
+    legs.forEach(function (lg, i) { svg.appendChild(curve(rootR, edge(lg, "left"), i === active)); });
+    var lr = edge(legs[active], "right");
+    stopCol.querySelectorAll(".mm-stop").forEach(function (sp) { svg.appendChild(curve(lr, edge(sp, "left"), true)); });
+  }
+  function select(i) {
+    active = i;
+    legCol.querySelectorAll(".mm-leg").forEach(function (lg, j) { lg.classList.toggle("active", j === i); });
+    renderStops(i); requestAnimationFrame(draw);
+  }
+  legCol.addEventListener("click", function (e) { var lg = e.target.closest(".mm-leg"); if (lg) select(+lg.getAttribute("data-i")); });
+
+  // ---- view switch ----
+  var treeView = document.getElementById("treeView"), mapView = document.getElementById("mapView");
+  var btnTree = document.getElementById("btnTree"), btnMap = document.getElementById("btnMap");
+  function show(v) {
+    var isMap = v === "map";
+    treeView.hidden = isMap; mapView.hidden = !isMap;
+    btnMap.classList.toggle("on", isMap); btnTree.classList.toggle("on", !isMap);
+    if (isMap) { if (!mapBuilt) { mapBuilt = true; select(0); } requestAnimationFrame(function () { requestAnimationFrame(draw); }); setTimeout(draw, 80); }
+  }
+  btnTree.addEventListener("click", function () { show("tree"); });
+  btnMap.addEventListener("click", function () { show("map"); });
+  window.addEventListener("resize", function () { if (!mapView.hidden) requestAnimationFrame(draw); });
+
+  // ---- completion / XP ----
+  function toggleSkill(n) {
+    if (done[n]) delete done[n]; else done[n] = 1;
+    saveDone();
+    var rs = treeView.querySelector('.skill[data-n="' + n + '"]'); if (rs) rs.classList.toggle("learned", !!done[n]);
+    var ms = stopCol.querySelector('.mm-stop[data-n="' + n + '"]'); if (ms) ms.classList.toggle("done", !!done[n]);
+    updateHUD();
+    document.getElementById("maxed").classList.toggle("show", xpCount() === TOTAL);
+  }
+  treeView.addEventListener("click", function (e) { var o = e.target.closest(".orb"); if (o) toggleSkill(o.closest(".skill").getAttribute("data-n")); });
+  treeView.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var o = e.target.closest(".orb"); if (!o) return; e.preventDefault();
+    toggleSkill(o.closest(".skill").getAttribute("data-n"));
+  });
+  document.getElementById("preset").addEventListener("click", function () {
+    done = {}; saveDone();
+    [].forEach.call(treeView.querySelectorAll(".skill.learned"), function (s) { s.classList.remove("learned"); });
+    [].forEach.call(stopCol.querySelectorAll(".mm-stop.done"), function (s) { s.classList.remove("done"); });
+    document.getElementById("maxed").classList.remove("show");
+    updateHUD();
+  });
+  updateHUD();
+  document.getElementById("maxed").classList.toggle("show", xpCount() === TOTAL);
+</script>
+</body>
+</html>
