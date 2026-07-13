@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The AI-Augmented Developer — a skill tree for building with AI</title>
-<meta name="description" content="Level up from prompting to building AI into production. A gamified skill tree of 27 skills across 6 tiers, each with hand-picked courses, papers, and docs. Earn XP, climb the ranks.">
+<meta name="description" content="Level up from prompting to building AI into production. A gamified skill tree of 32 skills across 6 tiers, each with hand-picked courses, papers, and docs. Earn XP, climb the ranks.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The AI-Augmented Developer — Skill Tree">
-<meta property="og:description" content="Level up from 'I use AI sometimes' to building AI into production. 27 skills, 6 tiers, earn XP and climb the ranks.">
+<meta property="og:description" content="Level up from 'I use AI sometimes' to building AI into production. 32 skills, 6 tiers, earn XP and climb the ranks.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The AI-Augmented Developer Skill Tree">
 <meta name="twitter:description" content="A gamified path to building with AI — earn XP, level up, with a resource at every skill.">
@@ -56,6 +56,12 @@
   .xp-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 100px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
   .reset { font-family: var(--mono); font-size: 0.66rem; background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 6px; padding: 0.2rem 0.5rem; cursor: pointer; align-self: center; }
   .reset:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .startguide { margin: 1.2rem 0 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.2rem 1.1rem; box-shadow: var(--shadow); }
+  .startguide .sg-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); font-weight: 700; }
+  .startguide ul { margin: 0.6rem 0 0.55rem; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .startguide li { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
+  .startguide li b { color: var(--ink); }
+  .startguide .sg-note { font-size: 0.82rem; color: var(--muted); font-style: italic; }
 
   .switch { display: inline-flex; background: var(--paper-2); border: 1px solid var(--line); border-radius: 100px; padding: 4px; gap: 2px; margin: 1.4rem 0 0.3rem; }
   .switch button { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; border: none; background: transparent; color: var(--muted); padding: 0.5rem 1.05rem; border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; transition: all 0.18s ease; }
@@ -150,7 +156,7 @@
 
     <p class="eyebrow">A skill tree for builders</p>
     <h1>Level up as an <span class="g">AI-Augmented</span> Developer</h1>
-    <p class="lede">27 skills, 6 tiers — from how the model works to shipping AI in production. Learn a skill, earn XP, climb the ranks.</p>
+    <p class="lede">32 skills, 6 tiers — from how the model works to shipping AI in production. Learn a skill, earn XP, climb the ranks.</p>
 
     <div class="hud">
       <div class="lvl-badge"><div><span class="l">LVL</span><br><span class="n" id="hudLvl">1</span></div></div>
@@ -159,10 +165,20 @@
         <div class="rank" id="hudRank">Prompt-Curious</div>
       </div>
       <div class="xp">
-        <div class="xp-top"><span id="xpText">0 / 27 skills</span><span id="nextText"></span></div>
+        <div class="xp-top"><span id="xpText">0 / 32 skills</span><span id="nextText"></span></div>
         <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
       </div>
       <button class="reset" id="preset" type="button">Reset</button>
+    </div>
+
+    <div class="startguide">
+      <span class="sg-label">◇ Where do I start?</span>
+      <ul>
+        <li><b>New to AI?</b> Begin at Tier&nbsp;I — build the mental model before anything else.</li>
+        <li><b>Prompt well &amp; use AI daily?</b> Jump to Tier&nbsp;III–IV — extend your agent with MCP, plugins, and tools.</li>
+        <li><b>Already shipping AI features?</b> Head to Tier&nbsp;V–VI — RAG, evals, security, and scaling.</li>
+      </ul>
+      <span class="sg-note">The order is the point: do a tier, ship something small, then move on. (Career seniority doesn't map here — a staff engineer can be new to this, and that's fine.)</span>
     </div>
 
     <div class="switch" role="group" aria-label="Choose view">
@@ -197,51 +213,56 @@
       { n:"02", h:"Transformers & attention", d:"The architecture under every modern model: self-attention, why it beat RNNs, and how a stack of layers turns tokens into meaning. Go one level below the abstraction — it pays off everywhere later.", res:[{l:"The Illustrated Transformer",u:"https://jalammar.github.io/illustrated-transformer/"},{l:"Attention Is All You Need",u:"https://arxiv.org/abs/1706.03762"},{l:"Karpathy — Let's build GPT",u:"https://www.youtube.com/@AndrejKarpathy"}] },
       { n:"03", h:"Training, base vs instruct, fine-tuning", d:"Pre-training vs instruction-tuning vs RLHF — why a base model completes text but an instruct model follows you. Where fine-tuning (and LoRA) fits, and where it doesn't.", res:[{l:"Hugging Face — LLM Course",u:"https://huggingface.co/learn"},{l:"LoRA (paper)",u:"https://arxiv.org/abs/2106.09685"}] },
       { n:"04", h:"Tokenization & embeddings", d:"How text becomes tokens (and why that causes weird bugs), and how embeddings place meaning in vector space — the foundation of search, RAG, and \"similarity.\"", res:[{l:"Karpathy — Let's build the Tokenizer",u:"https://www.youtube.com/@AndrejKarpathy"},{l:"Pinecone — Embeddings & vectors",u:"https://www.pinecone.io/learn/"}] },
-      { n:"05", h:"Failure modes & limits", d:"Hallucination, the \"almost right but subtly wrong\" trap, context limits, and stale knowledge. Knowing when NOT to trust the output is the real skill — and what separates safe users from dangerous ones.", res:[{l:"Anthropic — Docs & guidance",u:"https://docs.claude.com"}] }
+      { n:"05", h:"Open & local models", d:"Open-weight models (Llama, Mistral, Qwen) and running them locally with Ollama — plus when local beats an API: privacy, cost, offline use, and full control over the stack.", res:[{l:"Ollama — run models locally",u:"https://ollama.com"},{l:"Hugging Face — open models",u:"https://huggingface.co/models"}] },
+      { n:"06", h:"Failure modes & limits", d:"Hallucination, the \"almost right but subtly wrong\" trap, context limits, and stale knowledge. Knowing when NOT to trust the output is the real skill — and what separates safe users from dangerous ones.", res:[{l:"Anthropic — Docs & guidance",u:"https://docs.claude.com"}] }
     ]},
     { mark:"II", title:"Prompting", sub:"mastery", stops:[
-      { n:"06", h:"Prompt engineering fundamentals", d:"State the task plainly, give context and an example, specify the exact output format, and always add an escape hatch (\"if you don't know, say so\"). That last line is the biggest defense against made-up answers.", res:[{l:"Anthropic — interactive prompt tutorial",u:"https://github.com/anthropics/prompt-eng-interactive-tutorial"},{l:"DeepLearning.AI — Prompting for Devs (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"prompt-forge — build & test prompts",u:"https://github.com/plumbgoat/prompt-forge",t:true}] },
-      { n:"07", h:"Advanced patterns", d:"Chain-of-thought for reasoning, ReAct for tool-using agents, few-shot for format, self-consistency for reliability. Know the named techniques and when each earns its cost in tokens.", res:[{l:"Prompt Engineering Guide",u:"https://www.promptingguide.ai"},{l:"Chain-of-Thought (paper)",u:"https://arxiv.org/abs/2201.11903"},{l:"ReAct (paper)",u:"https://arxiv.org/abs/2210.03629"}] },
-      { n:"08", h:"Structured & constrained output", d:"Getting reliable JSON, matching a schema, and tool/function schemas — so code downstream can actually parse what the model returns. The format IS the requirement when a machine consumes it.", res:[{l:"Anthropic — Tool use & structured output",u:"https://docs.claude.com/en/docs/build-with-claude/tool-use"}] },
-      { n:"09", h:"Context engineering", d:"What to put in the window and what to leave out: retrieval vs stuffing, ordering, and why more context isn't always better. Managing the window well is the difference between flaky and reliable.", res:[{l:"Prompt Engineering Guide",u:"https://www.promptingguide.ai"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] }
+      { n:"07", h:"Prompt engineering fundamentals", d:"State the task plainly, give context and an example, specify the exact output format, and always add an escape hatch (\"if you don't know, say so\"). That last line is the biggest defense against made-up answers.", res:[{l:"Anthropic — interactive prompt tutorial",u:"https://github.com/anthropics/prompt-eng-interactive-tutorial"},{l:"DeepLearning.AI — Prompting for Devs (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"prompt-forge — build & test prompts",u:"https://github.com/plumbgoat/prompt-forge",t:true}] },
+      { n:"08", h:"Advanced patterns", d:"Chain-of-thought for reasoning, ReAct for tool-using agents, few-shot for format, self-consistency for reliability. Know the named techniques and when each earns its cost in tokens.", res:[{l:"Prompt Engineering Guide",u:"https://www.promptingguide.ai"},{l:"Chain-of-Thought (paper)",u:"https://arxiv.org/abs/2201.11903"},{l:"ReAct (paper)",u:"https://arxiv.org/abs/2210.03629"}] },
+      { n:"09", h:"Structured & constrained output", d:"Getting reliable JSON, matching a schema, and tool/function schemas — so code downstream can actually parse what the model returns. The format IS the requirement when a machine consumes it.", res:[{l:"Anthropic — Tool use & structured output",u:"https://docs.claude.com/en/docs/build-with-claude/tool-use"}] },
+      { n:"10", h:"Context engineering", d:"What to put in the window and what to leave out: retrieval vs stuffing, ordering, and why more context isn't always better. Managing the window well is the difference between flaky and reliable.", res:[{l:"Prompt Engineering Guide",u:"https://www.promptingguide.ai"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] }
     ]},
     { mark:"III", title:"Code with AI", sub:"do it well", stops:[
-      { n:"10", h:"Pick your driver", d:"Claude Code, Cursor, Copilot, Windsurf. Understand the difference between an agent (plans and edits across files) and autocomplete (finishes the line), and when each fits the task.", res:[{l:"Claude Code docs",u:"https://code.claude.com/docs"},{l:"Cursor docs",u:"https://docs.cursor.com"}] },
-      { n:"11", h:"Work in the loop", d:"Plan → generate → review → verify. Never blind-accept a diff. The bottleneck of software moved from writing code to trusting it — your job now is verification, and it's where the value is.", res:[{l:"Anthropic — Claude Code best practices",u:"https://www.anthropic.com/engineering/claude-code-best-practices"}] },
-      { n:"12", h:"Debug with AI", d:"Feed it the real error and let it reason over your actual code, not a textbook guess about the exception. The best debugging happens when the model can read the files, not just the stack-trace text.", res:[{l:"rootcause — trace a crash to its cause",u:"https://github.com/plumbgoat/rootcause",t:true}] },
-      { n:"13", h:"Keep your edge", d:"AI can quietly erode your skills if you stop understanding what it writes. Rule of thumb: don't ship code you couldn't explain in review. Read the diff, learn the pattern, stay the engineer.", res:[] }
+      { n:"11", h:"Pick your driver", d:"Claude Code, Cursor, Copilot, Windsurf. Understand the difference between an agent (plans and edits across files) and autocomplete (finishes the line), and when each fits the task.", res:[{l:"Claude Code docs",u:"https://code.claude.com/docs"},{l:"Cursor docs",u:"https://docs.cursor.com"}] },
+      { n:"12", h:"Work in the loop", d:"Plan → generate → review → verify. Never blind-accept a diff. The bottleneck of software moved from writing code to trusting it — your job now is verification, and it's where the value is.", res:[{l:"Anthropic — Claude Code best practices",u:"https://www.anthropic.com/engineering/claude-code-best-practices"}] },
+      { n:"13", h:"Debug with AI", d:"Feed it the real error and let it reason over your actual code, not a textbook guess about the exception. The best debugging happens when the model can read the files, not just the stack-trace text.", res:[{l:"rootcause — trace a crash to its cause",u:"https://github.com/plumbgoat/rootcause",t:true}] },
+      { n:"14", h:"Test AI-generated code", d:"AI code that looks right often isn't. Generate and run tests for what the model writes, and review the diff like a stranger's PR — trust is earned by verification, not by how confident the output sounds.", res:[{l:"testradar — find & write missing tests",u:"https://github.com/plumbgoat/testradar",t:true}] },
+      { n:"15", h:"Keep your edge", d:"AI can quietly erode your skills if you stop understanding what it writes. Rule of thumb: don't ship code you couldn't explain in review. Read the diff, learn the pattern, stay the engineer.", res:[] }
     ]},
     { mark:"IV", title:"Extend your agent", sub:"tools, skills, memory", stops:[
-      { n:"14", h:"MCP — connect real tools & data", d:"The Model Context Protocol is the universal way to plug your database, GitHub, Sentry, and more into an AI tool — the same server works across Claude Code, Cursor, and Windsurf. The biggest capability jump you can make.", res:[{l:"modelcontextprotocol.io — intro",u:"https://modelcontextprotocol.io"},{l:"Plugboard — the MCP servers worth using",u:"https://plumbgoat.github.io/ai-plugin-directory/",t:true}] },
-      { n:"15", h:"Skills, commands & plugins", d:"Package the things you keep re-explaining into reusable skills and slash commands, so your agent already knows your conventions every session instead of relearning them each time.", res:[{l:"Claude Code — Skills",u:"https://code.claude.com/docs/en/skills"}] },
-      { n:"16", h:"Build & ship your own plugin", d:"Bundle skills, commands, and hooks into a plugin, test it locally, and publish it to a marketplace. Going from consumer to author is the step that turns you into someone others learn from.", res:[{l:"Claude Code — Create plugins",u:"https://code.claude.com/docs/en/plugins"}] },
-      { n:"17", h:"Agents, subagents & orchestration", d:"Delegate multi-step work to specialized sub-agents (a reviewer, a researcher, a tester) and coordinate them. Just as important: learn when NOT to — more agents isn't always more done.", res:[{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"},{l:"Claude Code — Subagents",u:"https://code.claude.com/docs/en/sub-agents"}] },
-      { n:"18", h:"Hooks, automation & guardrails", d:"Wire deterministic checks into your workflow: run tests on save, block a commit with secrets, format on edit. Hooks are where you stop relying on the model to remember and make the system enforce it.", res:[{l:"Claude Code — Hooks",u:"https://code.claude.com/docs/en/hooks"}] }
+      { n:"16", h:"MCP — connect real tools & data", d:"The Model Context Protocol is the universal way to plug your database, GitHub, Sentry, and more into an AI tool — the same server works across Claude Code, Cursor, and Windsurf. The biggest capability jump you can make.", res:[{l:"modelcontextprotocol.io — intro",u:"https://modelcontextprotocol.io"},{l:"Plugboard — the MCP servers worth using",u:"https://plumbgoat.github.io/ai-plugin-directory/",t:true}] },
+      { n:"17", h:"Skills, commands & plugins", d:"Package the things you keep re-explaining into reusable skills and slash commands, so your agent already knows your conventions every session instead of relearning them each time.", res:[{l:"Claude Code — Skills",u:"https://code.claude.com/docs/en/skills"}] },
+      { n:"18", h:"Build & ship your own plugin", d:"Bundle skills, commands, and hooks into a plugin, test it locally, and publish it to a marketplace. Going from consumer to author is the step that turns you into someone others learn from.", res:[{l:"Claude Code — Create plugins",u:"https://code.claude.com/docs/en/plugins"}] },
+      { n:"19", h:"Agents, subagents & orchestration", d:"Delegate multi-step work to specialized sub-agents (a reviewer, a researcher, a tester) and coordinate them. Just as important: learn when NOT to — more agents isn't always more done.", res:[{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"},{l:"Claude Code — Subagents",u:"https://code.claude.com/docs/en/sub-agents"}] },
+      { n:"20", h:"Agent memory & state", d:"Give agents memory across steps and sessions — scratchpads, retrieval, and persistent context — so they don't start from zero every time and can actually carry a task forward.", res:[{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] },
+      { n:"21", h:"Hooks, automation & guardrails", d:"Wire deterministic checks into your workflow: run tests on save, block a commit with secrets, format on edit. Hooks are where you stop relying on the model to remember and make the system enforce it.", res:[{l:"Claude Code — Hooks",u:"https://code.claude.com/docs/en/hooks"}] }
     ]},
     { mark:"V", title:"Build into products", sub:"ship the model", stops:[
-      { n:"19", h:"Call the API", d:"The Messages API, choosing the right model for the job, how tokens and cost work, streaming responses, and prompt caching. Where \"AI feature\" stops being a chat window and becomes real software.", res:[{l:"Anthropic — API docs",u:"https://docs.claude.com/en/api"},{l:"DeepLearning.AI — short courses",u:"https://www.deeplearning.ai/short-courses/"}] },
-      { n:"20", h:"RAG, deep", d:"Beyond \"embed and search\": chunking strategy, hybrid (keyword + vector) retrieval, re-ranking, and evaluating retrieval quality. Most \"the AI is wrong\" bugs in products are actually retrieval bugs.", res:[{l:"DeepLearning.AI — Advanced RAG (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"Pinecone — Learn",u:"https://www.pinecone.io/learn/"},{l:"Hugging Face — Learn",u:"https://huggingface.co/learn"}] },
-      { n:"21", h:"Tool use & agentic architectures", d:"Function calling plus the loop — plan → act → observe → repeat — with memory and a stopping condition. Learn the failure modes: runaway loops, wrong tool, and no exit.", res:[{l:"Anthropic — Tool use",u:"https://docs.claude.com/en/docs/build-with-claude/tool-use"},{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"}] },
-      { n:"22", h:"Fine-tune vs prompt vs RAG", d:"The decision that saves (or wastes) the most money: when a better prompt is enough, when you need retrieval, and the rare cases fine-tuning actually earns its keep. Reach for the cheapest option that works.", res:[{l:"DeepLearning.AI — Finetuning LLMs (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] },
-      { n:"23", h:"Evaluation & observability (LLMOps)", d:"You can't improve what you don't measure. Build evals for output quality, trace real runs in production, and catch regressions before users do. This is the skill that separates demos from products.", res:[{l:"DeepLearning.AI — Evaluating GenAI",u:"https://www.deeplearning.ai/short-courses/"},{l:"Langfuse — observability",u:"https://langfuse.com"}] }
+      { n:"22", h:"Call the API", d:"The Messages API, how tokens and cost work, and prompt caching. Where \"AI feature\" stops being a chat window and becomes real software you call from your own code.", res:[{l:"Anthropic — API docs",u:"https://docs.claude.com/en/api"},{l:"DeepLearning.AI — short courses",u:"https://www.deeplearning.ai/short-courses/"}] },
+      { n:"23", h:"Choose the right model", d:"Match capability to the task: model selection, reading benchmarks, and the cost/quality/latency tradeoff. Cheap model for easy calls, strong model for hard ones — and knowing how to tell them apart.", res:[{l:"Anthropic — Models overview",u:"https://docs.claude.com/en/docs/about-claude/models"},{l:"LMArena — model leaderboard",u:"https://lmarena.ai"}] },
+      { n:"24", h:"Streaming & AI UX", d:"Designing for latency: stream responses token-by-token, show useful loading states, and make a slow model feel fast and trustworthy. The UX around the model matters as much as the model.", res:[{l:"Anthropic — Streaming",u:"https://docs.claude.com/en/api"}] },
+      { n:"25", h:"RAG, deep", d:"Beyond \"embed and search\": chunking strategy, hybrid (keyword + vector) retrieval, re-ranking, and evaluating retrieval quality. Most \"the AI is wrong\" bugs in products are actually retrieval bugs.", res:[{l:"DeepLearning.AI — Advanced RAG (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"Pinecone — Learn",u:"https://www.pinecone.io/learn/"},{l:"Hugging Face — Learn",u:"https://huggingface.co/learn"}] },
+      { n:"26", h:"Tool use & agentic architectures", d:"Function calling plus the loop — plan → act → observe → repeat — with memory and a stopping condition. Learn the failure modes: runaway loops, wrong tool, and no exit.", res:[{l:"Anthropic — Tool use",u:"https://docs.claude.com/en/docs/build-with-claude/tool-use"},{l:"Anthropic — Building effective agents",u:"https://www.anthropic.com/engineering/building-effective-agents"}] },
+      { n:"27", h:"Fine-tune vs prompt vs RAG", d:"The decision that saves (or wastes) the most money: when a better prompt is enough, when you need retrieval, and the rare cases fine-tuning actually earns its keep. Reach for the cheapest option that works.", res:[{l:"DeepLearning.AI — Finetuning LLMs (free)",u:"https://www.deeplearning.ai/short-courses/"},{l:"Anthropic — Docs",u:"https://docs.claude.com"}] },
+      { n:"28", h:"Evaluation & observability (LLMOps)", d:"You can't improve what you don't measure. Build evals for output quality, trace real runs in production, and catch regressions before users do. This is the skill that separates demos from products.", res:[{l:"DeepLearning.AI — Evaluating GenAI",u:"https://www.deeplearning.ai/short-courses/"},{l:"Langfuse — observability",u:"https://langfuse.com"}] }
     ]},
     { mark:"VI", title:"Production & frontier", sub:"safely, and keep up", stops:[
-      { n:"24", h:"Cost, latency & scaling", d:"Prompt caching, batching, streaming, model routing (cheap model for easy calls, strong model for hard ones), and knowing your per-request cost. The difference between a fun demo and a viable product.", res:[{l:"Anthropic — Caching & pricing",u:"https://docs.claude.com"}] },
-      { n:"25", h:"Security & safety, in depth", d:"Prompt injection, jailbreaks, data exfiltration, and the fact that model output is untrusted input. Treat everything the model reads from the web or a document as potentially hostile.", res:[{l:"OWASP — LLM Top 10",u:"https://owasp.org/www-project-top-10-for-large-language-model-applications/"},{l:"Willison — Prompt injection",u:"https://simonwillison.net/tags/prompt-injection/"}] },
-      { n:"26", h:"Multimodal & computer use", d:"Vision (reading images, screenshots, PDFs), and agents that operate a real screen or browser. The interface is expanding past text — know what's now possible and where it's still brittle.", res:[{l:"Anthropic — Vision & computer use",u:"https://docs.claude.com"}] },
-      { n:"27", h:"Stay current", d:"The field genuinely moves monthly. Build a habit: follow a few sharp people, skim the papers that matter, and try new capabilities as they ship. The meta-skill that keeps all the others from going stale.", res:[{l:"Hugging Face — Papers",u:"https://huggingface.co/papers"},{l:"Simon Willison's blog",u:"https://simonwillison.net"},{l:"arXiv — cs.CL recent",u:"https://arxiv.org/list/cs.CL/recent"}] }
+      { n:"29", h:"Cost, latency & scaling", d:"Prompt caching, batching, streaming, model routing (cheap model for easy calls, strong model for hard ones), and knowing your per-request cost. The difference between a fun demo and a viable product.", res:[{l:"Anthropic — Caching & pricing",u:"https://docs.claude.com"}] },
+      { n:"30", h:"Security & safety, in depth", d:"Prompt injection, jailbreaks, data exfiltration, and the fact that model output is untrusted input. Treat everything the model reads from the web or a document as potentially hostile.", res:[{l:"OWASP — LLM Top 10",u:"https://owasp.org/www-project-top-10-for-large-language-model-applications/"},{l:"Willison — Prompt injection",u:"https://simonwillison.net/tags/prompt-injection/"}] },
+      { n:"31", h:"Multimodal & computer use", d:"Vision (reading images, screenshots, PDFs), and agents that operate a real screen or browser. The interface is expanding past text — know what's now possible and where it's still brittle.", res:[{l:"Anthropic — Vision & computer use",u:"https://docs.claude.com"}] },
+      { n:"32", h:"Stay current", d:"The field genuinely moves monthly. Build a habit: follow a few sharp people, skim the papers that matter, and try new capabilities as they ship. The meta-skill that keeps all the others from going stale.", res:[{l:"Hugging Face — Papers",u:"https://huggingface.co/papers"},{l:"Simon Willison's blog",u:"https://simonwillison.net"},{l:"arXiv — cs.CL recent",u:"https://arxiv.org/list/cs.CL/recent"}] }
     ]}
   ];
 
   var RANKS = [
     { min:0,  lvl:1, title:"Prompt-Curious" },
-    { min:3,  lvl:2, title:"Prompt Apprentice" },
-    { min:6,  lvl:3, title:"Prompt Adept" },
-    { min:10, lvl:4, title:"AI-Assisted Dev" },
-    { min:14, lvl:5, title:"Agent Builder" },
-    { min:19, lvl:6, title:"AI Product Engineer" },
-    { min:24, lvl:7, title:"AI Systems Architect" },
-    { min:27, lvl:8, title:"Full-Stack AI Wizard" }
+    { min:4,  lvl:2, title:"Prompt Apprentice" },
+    { min:8,  lvl:3, title:"Prompt Adept" },
+    { min:12, lvl:4, title:"AI-Assisted Dev" },
+    { min:17, lvl:5, title:"Agent Builder" },
+    { min:22, lvl:6, title:"AI Product Engineer" },
+    { min:28, lvl:7, title:"AI Systems Architect" },
+    { min:32, lvl:8, title:"Full-Stack AI Wizard" }
   ];
 
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); };
@@ -252,7 +273,7 @@
     }).join("") + '</div>';
   }
 
-  var DONE_KEY = "aidevtree-done-v1", done = {};
+  var DONE_KEY = "aidevtree-done-v2", done = {};
   var TOTAL = STAGES.reduce(function (a, s) { return a + s.stops.length; }, 0);
   try { (JSON.parse(localStorage.getItem(DONE_KEY)) || []).forEach(function (n) { done[n] = 1; }); } catch (e) {}
   function saveDone() { try { localStorage.setItem(DONE_KEY, JSON.stringify(Object.keys(done).filter(function (k) { return done[k]; }))); } catch (e) {} }
