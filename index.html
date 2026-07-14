@@ -22,8 +22,8 @@
 <meta name="twitter:image" content="https://plumbgoat.github.io/ai-dev-roadmap/og-image.jpg">
 <style>
   :root {
-    --paper:#F6F6FB;--paper-2:#ECECF5;--ink:#17151F;--muted:#5F5B70;--line:#DEDCEA;--card:#FFFFFF;
-    --accent:#5B46D9;--accent-ink:#4A38C2;--accent-soft:rgba(91,70,217,0.09);--accent-line:rgba(91,70,217,0.26);
+    --paper:#F7F8FA;--paper-2:#EDEFF3;--ink:#161A20;--muted:#5C6470;--line:#DEE2E9;--card:#FFFFFF;
+    --accent:#1F9D6B;--accent-ink:#177A52;--accent-soft:rgba(31,157,107,0.10);--accent-line:rgba(31,157,107,0.28);
     --gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);
     --green:#1F9D6B;--green-soft:rgba(31,157,107,0.12);
     --shadow:0 1px 2px rgba(23,21,31,0.04),0 12px 32px -18px rgba(23,21,31,0.24);
@@ -32,15 +32,15 @@
     --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --paper:#09080F;--paper-2:#15141D;--ink:#E9E7F0;--muted:#948EA8;--line:#262433;--card:#171520;
-      --accent:#8E7BF5;--accent-ink:#A493F8;--accent-soft:rgba(142,123,245,0.14);--accent-line:rgba(142,123,245,0.34);
+    :root { --paper:#0B0E13;--paper-2:#141922;--ink:#E7EBF0;--muted:#909AA8;--line:#242B36;--card:#161B23;
+      --accent:#3FCF95;--accent-ink:#5BDBA8;--accent-soft:rgba(63,207,149,0.14);--accent-line:rgba(63,207,149,0.34);
       --gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);
       --green:#3FCF95;--green-soft:rgba(63,207,149,0.15);
       --shadow:0 1px 2px rgba(0,0,0,0.3),0 16px 40px -20px rgba(0,0,0,0.65);
       --shadow-lg:0 2px 8px rgba(0,0,0,0.4),0 28px 70px -26px rgba(0,0,0,0.8);}
   }
-  :root[data-theme="light"]{--paper:#F6F6FB;--paper-2:#ECECF5;--ink:#17151F;--muted:#5F5B70;--line:#DEDCEA;--card:#FFFFFF;--accent:#5B46D9;--accent-ink:#4A38C2;--accent-soft:rgba(91,70,217,0.09);--accent-line:rgba(91,70,217,0.26);--gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);--green:#1F9D6B;--green-soft:rgba(31,157,107,0.12);}
-  :root[data-theme="dark"]{--paper:#09080F;--paper-2:#15141D;--ink:#E9E7F0;--muted:#948EA8;--line:#262433;--card:#171520;--accent:#8E7BF5;--accent-ink:#A493F8;--accent-soft:rgba(142,123,245,0.14);--accent-line:rgba(142,123,245,0.34);--gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);--green:#3FCF95;--green-soft:rgba(63,207,149,0.15);}
+  :root[data-theme="light"]{--paper:#F7F8FA;--paper-2:#EDEFF3;--ink:#161A20;--muted:#5C6470;--line:#DEE2E9;--card:#FFFFFF;--accent:#1F9D6B;--accent-ink:#177A52;--accent-soft:rgba(31,157,107,0.10);--accent-line:rgba(31,157,107,0.28);--gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);--green:#1F9D6B;--green-soft:rgba(31,157,107,0.12);}
+  :root[data-theme="dark"]{--paper:#0B0E13;--paper-2:#141922;--ink:#E7EBF0;--muted:#909AA8;--line:#242B36;--card:#161B23;--accent:#3FCF95;--accent-ink:#5BDBA8;--accent-soft:rgba(63,207,149,0.14);--accent-line:rgba(63,207,149,0.34);--gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);--green:#3FCF95;--green-soft:rgba(63,207,149,0.15);}
 
   * { box-sizing: border-box; }
   body { margin: 0; }
@@ -90,6 +90,8 @@
   .startguide li { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
   .startguide li b { color: var(--ink); }
   .startguide .sg-note { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+  .theme-toggle { position: fixed; top: 14px; right: 14px; z-index: 50; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; display: grid; place-items: center; font-size: 1rem; box-shadow: var(--shadow); transition: border-color 0.15s ease, transform 0.15s ease; }
+  .theme-toggle:hover { border-color: var(--accent); transform: scale(1.05); }
 
   .switch { display: inline-flex; background: var(--paper-2); border: 1px solid var(--line); border-radius: 100px; padding: 4px; gap: 2px; margin: 1.6rem 0 0.3rem; }
   .switch button { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; border: none; background: transparent; color: var(--muted); padding: 0.5rem 1.05rem; border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; transition: all 0.18s ease; }
@@ -230,6 +232,8 @@
 <script data-goatcounter="https://plumbgoat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+<script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light or dark theme">☾</button>
 <div class="wrap">
   <div class="inner">
 
@@ -499,8 +503,6 @@
     { min:36, lvl:8, title:"Full-Stack AI Wizard" }
   ];
 
-  // per-tier hue journey: cool → warm as you ascend
-  var TIER_COLORS = ["#4361EE", "#6C4CE0", "#9333EA", "#DB2777", "#EA8C0B", "#E23744"];
 
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); };
   function chips(res) {
@@ -565,7 +567,7 @@
           '<div class="s-card"><button class="s-head" aria-expanded="false"><h3>' + esc(s.h) + '</h3><span class="xp-tag">+1 XP</span><span class="chev">▸</span></button>' + body + '</div></article>';
       }).join("");
       var proj = st.proj ? '<div class="proj reveal"><span class="proj-label">🎯 Tier project</span><h4>' + esc(st.proj.h) + '</h4><p>' + esc(st.proj.d) + '</p></div>' : '';
-      return '<section class="tier" style="--tc:' + TIER_COLORS[ti % TIER_COLORS.length] + '"><div class="tier-head reveal"><div class="tier-badge"><div><span class="l">LVL</span><br><span class="n">' + (ti + 1) + '</span></div></div>' +
+      return '<section class="tier" style="--tc: var(--accent)"><div class="tier-head reveal"><div class="tier-badge"><div><span class="l">LVL</span><br><span class="n">' + (ti + 1) + '</span></div></div>' +
         '<div class="tier-title"><h2>' + esc(st.title) + '</h2><p>' + esc(st.sub) + '</p></div><span class="tier-prog"></span></div>' + skills + proj + '</section>';
     }).join("");
     html += '<div class="maxed" id="maxed"><span class="m-badge">🏆</span><div><h3>Full-Stack AI Wizard — every skill unlocked.</h3><p>You went from pasting prompts to shipping AI in production. Now go build something only you could.</p></div></div>';
@@ -583,10 +585,10 @@
   var cols = document.getElementById("cols"), legCol = document.getElementById("legCol"), stopCol = document.getElementById("stopCol");
   var svg = document.getElementById("links"), SVGNS = "http://www.w3.org/2000/svg", active = 0, mapBuilt = false;
   legCol.innerHTML = STAGES.map(function (s, i) {
-    return '<div class="mm-node mm-leg" data-i="' + i + '" style="--tc:' + TIER_COLORS[i % TIER_COLORS.length] + '"><div class="mk">' + s.mark + '</div><div><h3>' + esc(s.title) + '</h3><span>' + esc(s.sub) + '</span></div></div>';
+    return '<div class="mm-node mm-leg" data-i="' + i + '" style="--tc: var(--accent)"><div class="mk">' + s.mark + '</div><div><h3>' + esc(s.title) + '</h3><span>' + esc(s.sub) + '</span></div></div>';
   }).join("");
   function renderStops(i) {
-    stopCol.innerHTML = '<div class="stops-wrap" style="--tc:' + TIER_COLORS[i % TIER_COLORS.length] + '">' + STAGES[i].stops.map(function (s) {
+    stopCol.innerHTML = '<div class="stops-wrap" style="--tc: var(--accent)">' + STAGES[i].stops.map(function (s) {
       return '<div class="mm-node mm-stop' + (done[s.n] ? ' done' : '') + '" data-n="' + s.n + '"><div class="st"><span class="sn">' + s.n + '</span><h4>' + esc(s.h) + '</h4></div><p class="mm-why">' + esc(s.why) + '</p>' + chips(s.res) + '</div>';
     }).join("") + '</div>';
   }
@@ -708,6 +710,15 @@
 
   updateHUD();
   document.getElementById("maxed").classList.toggle("show", xpCount() === TOTAL);
+</script>
+<script>
+  (function () {
+    var tb = document.getElementById("themeToggle");
+    function cur() { var s = localStorage.getItem("theme"); return s || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); }
+    function icon() { tb.textContent = cur() === "dark" ? "☀" : "☾"; }
+    icon();
+    tb.addEventListener("click", function () { var n = cur() === "dark" ? "light" : "dark"; localStorage.setItem("theme", n); document.documentElement.setAttribute("data-theme", n); icon(); });
+  })();
 </script>
 </body>
 </html>
