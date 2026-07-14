@@ -1,0 +1,38 @@
+name: "🔗 Report a broken or outdated link"
+description: A resource link 404s, redirects, or is now stale
+title: "[link] "
+labels: ["broken link"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill?
+      placeholder: e.g. "22 — Agents, subagents & orchestration"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: The problem link
+      placeholder: https://…
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What's wrong with it?
+      options:
+        - "404 / page gone"
+        - "Redirects somewhere unhelpful"
+        - "Content is outdated"
+        - "Paywalled / now requires login"
+        - "Other"
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Suggested replacement (optional)
+      placeholder: https://…
+    validations:
+      required: false

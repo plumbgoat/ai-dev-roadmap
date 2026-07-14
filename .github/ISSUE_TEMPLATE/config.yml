@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🌳 Open the skill tree
+    url: https://plumbgoat.github.io/ai-dev-roadmap/
+    about: Browse the live tree before suggesting a change.

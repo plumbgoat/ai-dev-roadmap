@@ -1,0 +1,34 @@
+name: "📚 Suggest a resource"
+description: Recommend a better link for an existing skill
+title: "[resource] "
+labels: ["resource"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill?
+      description: The skill number and/or title it belongs to.
+      placeholder: e.g. "04 — Tokenization & embeddings"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Resource URL
+      placeholder: https://…
+    validations:
+      required: true
+  - type: input
+    id: label
+    attributes:
+      label: Short label
+      description: How it should read on the chip (author — title).
+      placeholder: e.g. "Karpathy — Let's build the Tokenizer"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it worth adding (or what does it replace)?
+    validations:
+      required: false

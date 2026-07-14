@@ -37,10 +37,19 @@ Need*, *ReAct*, *LoRA*), Hugging Face, OWASP, and more. They're curated
 starting points, not an exhaustive syllabus. Skills marked ◆ link to small
 tools by [plumbgoat](https://github.com/plumbgoat).
 
-## Suggest a skill or resource
+## Contributing
 
-Open an issue with what's missing and where it fits.
+Contributions are very welcome — especially content (a missing skill, a sharper
+takeaway, a better link). It's one dependency-free HTML file, so there's no build
+step.
+
+- **No code needed:** [open an issue](../../issues/new/choose) to suggest a skill
+  or resource, or report a broken link.
+- **Editing directly:** see [CONTRIBUTING.md](CONTRIBUTING.md) — it explains the
+  `STAGES` data structure, how to add a skill, and how to run it locally.
+
+Please be kind — this project follows a [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
-MIT
+[MIT](LICENSE) © plumbgoat

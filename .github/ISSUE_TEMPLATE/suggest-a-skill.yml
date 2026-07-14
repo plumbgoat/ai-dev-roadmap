@@ -1,0 +1,43 @@
+name: "💡 Suggest a skill"
+description: Propose a new skill to add to the tree
+title: "[skill] "
+labels: ["skill suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping grow the tree! One skill per issue, please."
+  - type: input
+    id: title
+    attributes:
+      label: Skill title
+      placeholder: e.g. "Prompt caching in your agent"
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Which tier does it belong in?
+      options:
+        - "I — Foundations (how the model works)"
+        - "II — Prompting (mastery)"
+        - "III — Code with AI (do it well)"
+        - "IV — Extend your agent (tools, skills, memory)"
+        - "V — Build into products (ship the model)"
+        - "VI — Production & frontier (safely, and keep up)"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does this deserve a spot?
+      description: What does someone gain by learning it, and why now? Keep it tight.
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Resources
+      description: 1–3 specific, high-quality links (exact video/paper/doc, not a homepage).
+    validations:
+      required: false
