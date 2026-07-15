@@ -603,8 +603,9 @@
   function draw() {
     svg.setAttribute("width", cols.scrollWidth); svg.setAttribute("height", cols.scrollHeight);
     while (svg.firstChild) svg.removeChild(svg.firstChild);
-    var tc = TIER_COLORS[active % TIER_COLORS.length];
     var legs = legCol.querySelectorAll(".mm-leg"), rootR = edge(document.querySelector(".mm-root"), "right");
+    var activeLeg = legs[active];
+    var tc = (activeLeg && getComputedStyle(activeLeg).getPropertyValue("--tc").trim()) || "var(--accent)";
     legs.forEach(function (lg, i) { svg.appendChild(curve(rootR, edge(lg, "left"), i === active, tc)); });
     var lr = edge(legs[active], "right");
     stopCol.querySelectorAll(".mm-stop").forEach(function (sp) { svg.appendChild(curve(lr, edge(sp, "left"), true, tc)); });
