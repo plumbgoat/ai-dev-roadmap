@@ -1,4 +1,4 @@
-# The AI-Augmented Developer Skill Tree
+# The AI-Augmented Developer
 
 **Level up from "I use AI sometimes" to building AI into production.**
 
@@ -8,7 +8,7 @@ matters, a "you've got it when" mastery check, the pitfall to dodge, and
 hand-picked resources — and every tier ends in a hands-on project you
 actually build.
 
-📘 **[Open the course curriculum →](https://plumbgoat.github.io/ai-dev-roadmap/)**
+🌳 **[Open it →](https://plumbgoat.github.io/ai-dev-roadmap/)** — one page, three views: a structured course curriculum, a self-directed skill tree, and a mind map.
 
 ## What's inside
 
@@ -21,14 +21,16 @@ Six tiers, each a level, each ending in a project:
 5. **Build into products** (7) — the API, model choice, streaming & UX, RAG, tool use, fine-tune vs prompt vs RAG, evals & observability
 6. **Production & frontier** (5) — cost & scaling, security, multimodal, responsible AI, staying current
 
-## Prefer to explore freely instead?
+## Three ways to explore
 
-🌳 **[Open the skill tree →](https://plumbgoat.github.io/ai-dev-roadmap/skill-tree.html)**
-the same 36 skills, 6 tiers, and hands-on projects as the curriculum above,
-but as a self-directed skill tree and mind map instead of a fixed syllabus:
+A switcher at the top of the page moves between all three — same 36 skills
+underneath, same saved progress, different framing:
 
+- **📘 Curriculum** — the two-track syllabus: Foundations Track (no coding
+  background) and Builder Track (working developers), same six tiers at
+  different depth and pace.
 - **🌳 Skill tree** — click an orb to mark a skill learned and track your
-  progress through the six tiers. Progress is saved in your browser.
+  progress through the six tiers, at your own pace, in any order.
 - **🧠 Mind map** — the same 36 skills as an interactive branching map; click a
   branch to explore its skills, and click a skill to mark it learned.
 
