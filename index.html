@@ -22,40 +22,35 @@
 <meta name="twitter:image" content="https://plumbgoat.github.io/ai-dev-roadmap/og-image.jpg">
 <style>
   :root {
-    --paper:#F7F8FA;--paper-2:#EDEFF3;--ink:#161A20;--muted:#5C6470;--line:#DEE2E9;--card:#FFFFFF;
-    --accent:#1F9D6B;--accent-ink:#177A52;--accent-soft:rgba(31,157,107,0.10);--accent-line:rgba(31,157,107,0.28);
-    --gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);
-    --green:#1F9D6B;--green-soft:rgba(31,157,107,0.12);
-    --shadow:0 1px 2px rgba(23,21,31,0.04),0 12px 32px -18px rgba(23,21,31,0.24);
-    --shadow-lg:0 2px 6px rgba(23,21,31,0.06),0 24px 60px -24px rgba(23,21,31,0.34);
+    --paper:#F7F4EE;--paper-2:#EFEAE0;--ink:#2A2620;--muted:#736C5E;--line:#DDD5C4;--card:#FFFDF9;
+    --accent:#2C6E63;--accent-ink:#1F5750;--accent-soft:rgba(44,110,99,0.10);--accent-line:rgba(44,110,99,0.28);
+    --gold:#B5622C;--gold-ink:#96501F;--gold-soft:rgba(181,98,44,0.12);--gold-line:rgba(181,98,44,0.4);
+    --green:#2C6E63;--green-soft:rgba(44,110,99,0.12);
+    --shadow:0 1px 2px rgba(42,38,32,0.04),0 12px 32px -18px rgba(42,38,32,0.24);
+    --shadow-lg:0 2px 6px rgba(42,38,32,0.06),0 24px 60px -24px rgba(42,38,32,0.34);
     --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
     --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --paper:#0B0E13;--paper-2:#141922;--ink:#E7EBF0;--muted:#909AA8;--line:#242B36;--card:#161B23;
-      --accent:#3FCF95;--accent-ink:#5BDBA8;--accent-soft:rgba(63,207,149,0.14);--accent-line:rgba(63,207,149,0.34);
-      --gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);
-      --green:#3FCF95;--green-soft:rgba(63,207,149,0.15);
+    :root { --paper:#1B1815;--paper-2:#221E19;--ink:#EAE4D8;--muted:#A69B87;--line:#332D25;--card:#211D18;
+      --accent:#4FA394;--accent-ink:#63B5A6;--accent-soft:rgba(79,163,148,0.14);--accent-line:rgba(79,163,148,0.34);
+      --gold:#D98A52;--gold-ink:#E4A06C;--gold-soft:rgba(217,138,82,0.14);--gold-line:rgba(217,138,82,0.4);
+      --green:#4FA394;--green-soft:rgba(79,163,148,0.15);
       --shadow:0 1px 2px rgba(0,0,0,0.3),0 16px 40px -20px rgba(0,0,0,0.65);
       --shadow-lg:0 2px 8px rgba(0,0,0,0.4),0 28px 70px -26px rgba(0,0,0,0.8);}
   }
-  :root[data-theme="light"]{--paper:#F7F8FA;--paper-2:#EDEFF3;--ink:#161A20;--muted:#5C6470;--line:#DEE2E9;--card:#FFFFFF;--accent:#1F9D6B;--accent-ink:#177A52;--accent-soft:rgba(31,157,107,0.10);--accent-line:rgba(31,157,107,0.28);--gold:#C6881A;--gold-ink:#A96F0F;--gold-soft:rgba(198,136,26,0.12);--gold-line:rgba(198,136,26,0.4);--green:#1F9D6B;--green-soft:rgba(31,157,107,0.12);}
-  :root[data-theme="dark"]{--paper:#0B0E13;--paper-2:#141922;--ink:#E7EBF0;--muted:#909AA8;--line:#242B36;--card:#161B23;--accent:#3FCF95;--accent-ink:#5BDBA8;--accent-soft:rgba(63,207,149,0.14);--accent-line:rgba(63,207,149,0.34);--gold:#E9B84C;--gold-ink:#F0C766;--gold-soft:rgba(233,184,76,0.14);--gold-line:rgba(233,184,76,0.4);--green:#3FCF95;--green-soft:rgba(63,207,149,0.15);}
+  :root[data-theme="light"]{--paper:#F7F4EE;--paper-2:#EFEAE0;--ink:#2A2620;--muted:#736C5E;--line:#DDD5C4;--card:#FFFDF9;--accent:#2C6E63;--accent-ink:#1F5750;--accent-soft:rgba(44,110,99,0.10);--accent-line:rgba(44,110,99,0.28);--gold:#B5622C;--gold-ink:#96501F;--gold-soft:rgba(181,98,44,0.12);--gold-line:rgba(181,98,44,0.4);--green:#2C6E63;--green-soft:rgba(44,110,99,0.12);}
+  :root[data-theme="dark"]{--paper:#1B1815;--paper-2:#221E19;--ink:#EAE4D8;--muted:#A69B87;--line:#332D25;--card:#211D18;--accent:#4FA394;--accent-ink:#63B5A6;--accent-soft:rgba(79,163,148,0.14);--accent-line:rgba(79,163,148,0.34);--gold:#D98A52;--gold-ink:#E4A06C;--gold-soft:rgba(217,138,82,0.14);--gold-line:rgba(217,138,82,0.4);--green:#4FA394;--green-soft:rgba(79,163,148,0.15);}
 
   * { box-sizing: border-box; }
   body { margin: 0; }
-  .wrap { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.55; padding: clamp(1.2rem,4vw,2.6rem) 1.2rem 4rem; min-height: 100vh;
-    background:
-      radial-gradient(1100px 560px at 50% -8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 68%),
-      radial-gradient(900px 500px at 100% 8%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 60%),
-      radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 0) 0 0 / 26px 26px,
-      var(--paper);
-    background-attachment: fixed, fixed, fixed, fixed; }
+  .wrap { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.55; padding: clamp(1.2rem,4vw,2.6rem) 1.2rem 4rem; min-height: 100vh; background: var(--paper); }
   .inner { max-width: 1040px; margin: 0 auto; }
 
   .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 0.9rem; display: flex; align-items: center; gap: 0.6rem; }
   .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
-  h1 { font-size: clamp(2rem,5.5vw,3.4rem); line-height: 1.03; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 0.7rem; text-wrap: balance; max-width: 17ch; }
+  h1 { font-family: var(--serif); font-size: clamp(2rem,5.5vw,3.4rem); line-height: 1.05; letter-spacing: -0.015em; font-weight: 600; margin: 0 0 0.7rem; text-wrap: balance; max-width: 17ch; }
   h1 .g { color: var(--accent-ink); }
   .lede { font-size: clamp(1rem,2.2vw,1.18rem); color: var(--muted); max-width: 48ch; margin: 0 0 1.4rem; }
 
@@ -64,7 +59,7 @@
   .hud::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--accent), var(--gold)); }
   .hud .rank-wrap { min-width: 0; }
   .hud .rank-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-  .hud .rank { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 0.1rem; }
+  .hud .rank { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 0.1rem; }
   .lvl-badge { flex: 0 0 auto; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 12px; background: var(--gold-soft); border: 1px solid var(--gold-line); text-align: center; line-height: 1; }
   .lvl-badge .l { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.14em; color: var(--gold-ink); }
   .lvl-badge .n { font-size: 1.35rem; font-weight: 800; color: var(--gold-ink); }
@@ -124,7 +119,7 @@
   .tier.complete .tier-badge { background: var(--gold-soft); border-color: var(--gold-line); box-shadow: 0 0 0 4px var(--paper), 0 0 22px -4px var(--gold); }
   .tier.complete .tier-badge .l, .tier.complete .tier-badge .n { color: var(--gold-ink); }
   .tier-title { flex: 1 1 auto; min-width: 0; }
-  .tier-title h2 { margin: 0; font-size: 1.2rem; letter-spacing: -0.015em; }
+  .tier-title h2 { font-family: var(--serif); font-weight: 600; margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
   .tier-title p { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.88rem; }
   .tier-prog { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); white-space: nowrap; }
   .tier.complete .tier-prog { color: var(--gold-ink); font-weight: 700; }
@@ -189,7 +184,7 @@
   .mm-links { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
   .mm-col { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .mm-node { background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
-  .mm-root { align-self: center; padding: 1rem 1.15rem; max-width: 180px; text-align: center; font-weight: 800; font-size: 1.02rem; line-height: 1.15; border-color: var(--accent); box-shadow: var(--shadow), 0 0 0 1px var(--accent); }
+  .mm-root { align-self: center; padding: 1rem 1.15rem; max-width: 180px; text-align: center; font-family: var(--serif); font-weight: 600; font-size: 1.05rem; line-height: 1.2; border-color: var(--accent); box-shadow: var(--shadow), 0 0 0 1px var(--accent); }
   .mm-root .rk { display: block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 0.4rem; font-weight: 700; }
   .mm-leg { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 0.9rem; width: 240px; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease; }
   .mm-leg:hover { transform: translateX(2px); border-color: var(--accent-line); }
