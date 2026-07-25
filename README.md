@@ -29,6 +29,14 @@ Six tiers, each a level, each ending in a project:
 - **🧠 Mind map** — the same 36 skills as an interactive branching map; click a
   branch to explore its skills, and click a skill to mark it learned.
 
+## Prefer a structured course?
+
+📘 **[Course Curriculum →](https://plumbgoat.github.io/ai-dev-roadmap/curriculum.html)**
+turns the skill tree into an actual syllabus: two parallel tracks — a
+**Foundations Track** for learners with no coding background, and a **Builder
+Track** for working developers — covering the same six tiers at very
+different depth and pace, with pacing, exercises, and checkpoints per module.
+
 ## Resources
 
 Every skill links out to real, well-known resources — Karpathy, 3Blue1Brown,
