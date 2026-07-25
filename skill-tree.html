@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The AI-Augmented Developer — a skill tree for building with AI</title>
-<meta name="description" content="Level up from prompting to building AI into production. A gamified skill tree of 36 skills across 6 tiers, each with why it matters, a mastery check, pitfalls, hand-picked resources, and a hands-on project per tier. Earn XP, climb the ranks.">
+<meta name="description" content="Level up from prompting to building AI into production. A skill tree of 36 skills across 6 tiers, each with why it matters, a mastery check, pitfalls, hand-picked resources, and a hands-on project per tier.">
 <link rel="canonical" href="https://plumbgoat.github.io/ai-dev-roadmap/skill-tree.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🌳</text></svg>">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://plumbgoat.github.io/ai-dev-roadmap/skill-tree.html">
 <meta property="og:title" content="The AI-Augmented Developer — Skill Tree">
-<meta property="og:description" content="Level up from 'I use AI sometimes' to building AI into production. 36 skills, 6 tiers, a project per tier, earn XP and climb the ranks.">
+<meta property="og:description" content="Level up from 'I use AI sometimes' to building AI into production. 36 skills, 6 tiers, a hands-on project per tier.">
 <meta property="og:image" content="https://plumbgoat.github.io/ai-dev-roadmap/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="The AI-Augmented Developer skill tree — 36 skills across 6 tiers.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The AI-Augmented Developer Skill Tree">
-<meta name="twitter:description" content="A gamified path to building with AI — earn XP, level up, with a resource and a project at every step.">
+<meta name="twitter:description" content="A structured path to building with AI — a resource and a hands-on project at every step.">
 <meta name="twitter:image" content="https://plumbgoat.github.io/ai-dev-roadmap/og-image.jpg">
 <style>
   :root {
@@ -54,25 +54,9 @@
   h1 .g { color: var(--accent-ink); }
   .lede { font-size: clamp(1rem,2.2vw,1.18rem); color: var(--muted); max-width: 48ch; margin: 0 0 1.4rem; }
 
-  /* HUD player card */
-  .hud { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.2rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-  .hud::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--accent), var(--gold)); }
-  .hud .rank-wrap { min-width: 0; }
-  .hud .rank-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-  .hud .rank { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 0.1rem; }
-  .lvl-badge { flex: 0 0 auto; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 12px; background: var(--gold-soft); border: 1px solid var(--gold-line); text-align: center; line-height: 1; }
-  .lvl-badge .l { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.14em; color: var(--gold-ink); }
-  .lvl-badge .n { font-size: 1.35rem; font-weight: 800; color: var(--gold-ink); }
-  .xp { flex: 1 1 240px; min-width: 200px; }
-  .xp-top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-bottom: 0.4rem; }
-  .xp-top b { color: var(--gold-ink); }
-  .xp-bar { height: 10px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 100px; overflow: hidden; }
-  .xp-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 100px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
-  .hud-btns { display: flex; gap: 0.5rem; align-items: center; }
   .btn { font-family: var(--mono); font-size: 0.66rem; background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 6px; padding: 0.3rem 0.55rem; cursor: pointer; transition: all 0.15s ease; }
   .btn:hover { border-color: var(--accent); color: var(--accent-ink); }
-  .btn.share { border-color: var(--accent-line); color: var(--accent-ink); font-weight: 600; }
-  .btn.share:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .progress-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
 
   .nextup { margin: 0.9rem 0 0; display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--muted); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 12px; padding: 0.6rem 0.9rem; width: 100%; text-align: left; cursor: pointer; transition: transform 0.15s ease; }
   .nextup:hover { transform: translateX(2px); }
@@ -116,13 +100,10 @@
   .tier-badge { flex: 0 0 auto; position: relative; z-index: 2; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 13px; background: var(--tc-soft); border: 1.5px solid var(--tc-line); box-shadow: 0 0 0 4px var(--paper), 0 0 22px -8px var(--tc); line-height: 1; transition: all 0.3s ease; }
   .tier-badge .l { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.12em; color: var(--tc-ink); }
   .tier-badge .n { font-size: 1.2rem; font-weight: 800; color: var(--tc-ink); }
-  .tier.complete .tier-badge { background: var(--gold-soft); border-color: var(--gold-line); box-shadow: 0 0 0 4px var(--paper), 0 0 22px -4px var(--gold); }
-  .tier.complete .tier-badge .l, .tier.complete .tier-badge .n { color: var(--gold-ink); }
   .tier-title { flex: 1 1 auto; min-width: 0; }
   .tier-title h2 { font-family: var(--serif); font-weight: 600; margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
   .tier-title p { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.88rem; }
   .tier-prog { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); white-space: nowrap; }
-  .tier.complete .tier-prog { color: var(--gold-ink); font-weight: 700; }
 
   .skill { display: grid; grid-template-columns: 52px 1fr; gap: 0 1rem; position: relative; padding: 0.4rem 0; }
   /* branch connector from trunk to card */
@@ -130,21 +111,20 @@
   .orb { position: relative; z-index: 1; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 0.9rem; color: var(--tc-ink); background: linear-gradient(160deg, var(--card), var(--tc-soft)); border: 2px solid var(--tc-line); box-shadow: 0 0 0 4px var(--paper); cursor: pointer; user-select: none; align-self: center; transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
   .orb:hover { transform: scale(1.08); border-color: var(--tc); box-shadow: 0 0 0 4px var(--paper), 0 0 16px -4px var(--tc); }
   .orb:focus-visible { outline: 2px solid var(--tc); outline-offset: 3px; }
-  .skill.learned .orb { background: linear-gradient(160deg, var(--gold), var(--gold-ink)); border-color: var(--gold); color: #fff; box-shadow: 0 0 0 4px var(--paper), 0 0 18px -2px var(--gold); }
+  .skill.learned .orb { background: var(--accent); border-color: var(--accent); color: #fff; }
   .skill.learned .orb .ntxt { display: none; }
   .skill.learned .orb::after { content: "✓"; color: #fff; font-size: 1.2rem; font-weight: 800; }
   .skill.next .orb { border-color: var(--tc); box-shadow: 0 0 0 4px var(--paper), 0 0 0 6px var(--tc-soft); animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100% { box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--tc-soft); } 50% { box-shadow: 0 0 0 4px var(--paper), 0 0 0 9px var(--tc-soft); } }
 
   .s-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); transition: border-color 0.25s ease, box-shadow 0.25s ease; overflow: hidden; }
-  .skill.learned .s-card { border-color: var(--gold-line); }
+  .skill.learned .s-card { border-color: var(--accent-line); }
   .s-card:hover { box-shadow: var(--shadow-lg); border-color: var(--tc-line); }
   .s-card.open { border-color: var(--tc-line); box-shadow: var(--shadow-lg); }
   .s-head { width: 100%; display: flex; align-items: center; gap: 0.6rem; background: none; border: none; text-align: left; cursor: pointer; padding: 0.85rem 1.05rem; font-family: var(--sans); color: var(--ink); }
   .s-head h3 { margin: 0; font-size: 1.06rem; letter-spacing: -0.01em; flex: 1 1 auto; }
   .skill.learned .s-head h3 { color: var(--muted); }
   .s-head:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 12px; }
-  .xp-tag { font-family: var(--mono); font-size: 0.62rem; color: var(--gold-ink); background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 6px; padding: 0.1rem 0.4rem; white-space: nowrap; }
   .chev { color: var(--muted); font-size: 0.8rem; transition: transform 0.25s ease; }
   .s-card.open .chev { transform: rotate(90deg); }
   .s-body { padding: 0 1.05rem 1.05rem; }
@@ -171,12 +151,6 @@
   .proj h4 { margin: 0.25rem 0 0.2rem; font-size: 0.98rem; }
   .proj p { margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
-  /* max-rank banner */
-  .maxed { margin-top: 2rem; margin-left: 68px; display: none; align-items: center; gap: 0.9rem; background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 14px; padding: 1rem 1.2rem; }
-  .maxed.show { display: flex; }
-  .maxed .m-badge { font-size: 1.6rem; }
-  .maxed h3 { margin: 0; color: var(--gold-ink); font-size: 1.05rem; }
-  .maxed p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; }
 
   /* mind map */
   .mm-scroll { margin-top: 1.2rem; overflow: auto; border: 1px solid var(--line); border-radius: 16px; background: radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0) 0 0 / 22px 22px, var(--card); }
@@ -195,19 +169,16 @@
   .mm-leg.active .mk { background: var(--tc); color: #fff; }
   .mm-stop { padding: 0.75rem 0.9rem; width: 320px; cursor: pointer; transition: border-color 0.2s ease; }
   .mm-stop:hover { border-color: var(--accent-line); }
-  .mm-stop.done { border-color: var(--gold-line); }
+  .mm-stop.done { border-color: var(--accent-line); }
   .mm-stop .st { display: flex; align-items: baseline; gap: 0.5rem; }
   .mm-stop .sn { font-family: var(--mono); font-size: 0.72rem; color: var(--tc-ink, var(--accent-ink)); font-weight: 700; }
-  .mm-stop.done .sn::after { content: " ✓"; color: var(--gold-ink); }
+  .mm-stop.done .sn::after { content: " ✓"; color: var(--accent-ink); }
   .mm-stop h4 { margin: 0; font-size: 0.95rem; letter-spacing: -0.01em; }
   .mm-stop .mm-why { margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
   .mm-stop .res-row { margin-top: 0.55rem; }
   .stops-wrap { display: flex; flex-direction: column; gap: 12px; animation: fade 0.35s ease; }
   @keyframes fade { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
 
-  .toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%) translateY(160%); background: var(--ink); color: var(--paper); font-size: 0.88rem; padding: 0.7rem 1.1rem; border-radius: 10px; box-shadow: var(--shadow-lg); transition: transform 0.35s cubic-bezier(.4,0,.2,1); z-index: 20; max-width: 90vw; display: flex; align-items: center; gap: 0.5rem; }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-  .toast .t-emoji { font-size: 1.1rem; }
 
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -219,7 +190,7 @@
     .skill::before { left: 21px; width: 23px; }
     .orb { width: 44px; height: 44px; font-size: 0.82rem; }
     .tier-badge { width: 46px; height: 46px; }
-    .proj, .maxed { margin-left: 0; }
+    .proj { margin-left: 0; }
     .facet { grid-template-columns: 1fr; gap: 0.2rem; }
   }
 
@@ -238,20 +209,9 @@
     <h1>Level up as an <span class="g">AI-Augmented</span> Developer</h1>
     <p class="lede">36 skills, 6 tiers — from how the model works to shipping AI in production. Each skill has why it matters, a mastery check, the pitfall to dodge, and hand-picked resources. Every tier ends in a project you actually build.</p>
 
-    <div class="hud">
-      <div class="lvl-badge"><div><span class="l">LVL</span><br><span class="n" id="hudLvl">1</span></div></div>
-      <div class="rank-wrap">
-        <div class="rank-label">Rank</div>
-        <div class="rank" id="hudRank">Prompt-Curious</div>
-      </div>
-      <div class="xp">
-        <div class="xp-top"><span id="xpText">0 / 36 skills</span><span id="nextText"></span></div>
-        <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
-      </div>
-      <div class="hud-btns">
-        <button class="btn share" id="pshare" type="button">↗ Share my rank</button>
-        <button class="btn" id="preset" type="button">Reset</button>
-      </div>
+    <div class="progress-row">
+      <span id="progressText">0 / 36 skills learned</span>
+      <button class="btn" id="preset" type="button">Reset progress</button>
     </div>
 
     <button class="nextup" id="nextup" type="button" hidden></button>
@@ -292,7 +252,6 @@
 
   </div>
 </div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
   var STAGES = [
@@ -490,18 +449,6 @@
     ]}
   ];
 
-  var RANKS = [
-    { min:0,  lvl:1, title:"Prompt-Curious" },
-    { min:5,  lvl:2, title:"Prompt Apprentice" },
-    { min:10, lvl:3, title:"Prompt Adept" },
-    { min:15, lvl:4, title:"AI-Assisted Dev" },
-    { min:20, lvl:5, title:"Agent Builder" },
-    { min:25, lvl:6, title:"AI Product Engineer" },
-    { min:31, lvl:7, title:"AI Systems Architect" },
-    { min:36, lvl:8, title:"Full-Stack AI Wizard" }
-  ];
-
-
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); };
   function chips(res) {
     if (!res || !res.length) return "";
@@ -519,26 +466,13 @@
   try { (JSON.parse(localStorage.getItem(DONE_KEY)) || []).forEach(function (n) { done[n] = 1; }); } catch (e) {}
   function saveDone() { try { localStorage.setItem(DONE_KEY, JSON.stringify(Object.keys(done).filter(function (k) { return done[k]; }))); } catch (e) {} }
   function xpCount() { var c = 0; for (var k in done) if (done[k]) c++; return c; }
-  function rankFor(xp) { var cur = RANKS[0]; for (var i = 0; i < RANKS.length; i++) { if (xp >= RANKS[i].min) cur = RANKS[i]; } return cur; }
   function firstUnlearned() { for (var i = 0; i < ALL.length; i++) { if (!done[ALL[i].n]) return ALL[i]; } return null; }
 
-  var lastLevel = rankFor(xpCount()).lvl;
-
-  function updateHUD() {
-    var xp = xpCount(), cur = RANKS[0], next = null;
-    for (var i = 0; i < RANKS.length; i++) { if (xp >= RANKS[i].min) cur = RANKS[i]; else { next = RANKS[i]; break; } }
-    document.getElementById("hudLvl").textContent = cur.lvl;
-    document.getElementById("hudRank").textContent = cur.title;
-    document.getElementById("xpText").textContent = xp + " / " + TOTAL + " skills";
-    var fill, ntxt;
-    if (next) { fill = (xp - cur.min) / (next.min - cur.min) * 100; ntxt = (next.min - xp) + " to " + next.title; }
-    else { fill = 100; ntxt = "MAX RANK ★"; }
-    document.getElementById("xpFill").style.width = fill + "%";
-    document.getElementById("nextText").innerHTML = next ? esc(ntxt) : "<b>" + esc(ntxt) + "</b>";
-    // tier completion + next-skill highlight
+  function updateProgress() {
+    document.getElementById("progressText").textContent = xpCount() + " / " + TOTAL + " skills learned";
+    // tier completion count + next-skill highlight
     document.querySelectorAll("#treeView .tier").forEach(function (tier) {
       var skills = tier.querySelectorAll(".skill"), learned = tier.querySelectorAll(".skill.learned").length;
-      tier.classList.toggle("complete", learned === skills.length && skills.length > 0);
       var pr = tier.querySelector(".tier-prog"); if (pr) pr.textContent = learned + " / " + skills.length + (learned === skills.length ? " ✓" : "");
     });
     document.querySelectorAll("#treeView .skill.next").forEach(function (s) { s.classList.remove("next"); });
@@ -562,13 +496,12 @@
           '</div>';
         return '<article class="skill reveal' + (done[s.n] ? ' learned' : '') + '" data-n="' + s.n + '">' +
           '<div class="orb" role="button" tabindex="0" aria-pressed="' + (done[s.n] ? 'true' : 'false') + '" aria-label="' + esc(s.h) + ' — mark learned" title="Mark learned"><span class="ntxt">' + s.n + '</span></div>' +
-          '<div class="s-card"><button class="s-head" aria-expanded="false"><h3>' + esc(s.h) + '</h3><span class="xp-tag">+1 XP</span><span class="chev">▸</span></button>' + body + '</div></article>';
+          '<div class="s-card"><button class="s-head" aria-expanded="false"><h3>' + esc(s.h) + '</h3><span class="chev">▸</span></button>' + body + '</div></article>';
       }).join("");
       var proj = st.proj ? '<div class="proj reveal"><span class="proj-label">🎯 Tier project</span><h4>' + esc(st.proj.h) + '</h4><p>' + esc(st.proj.d) + '</p></div>' : '';
-      return '<section class="tier" style="--tc: var(--accent)"><div class="tier-head reveal"><div class="tier-badge"><div><span class="l">LVL</span><br><span class="n">' + (ti + 1) + '</span></div></div>' +
+      return '<section class="tier" style="--tc: var(--accent)"><div class="tier-head reveal"><div class="tier-badge"><div><span class="l">TIER</span><br><span class="n">' + (ti + 1) + '</span></div></div>' +
         '<div class="tier-title"><h2>' + esc(st.title) + '</h2><p>' + esc(st.sub) + '</p></div><span class="tier-prog"></span></div>' + skills + proj + '</section>';
     }).join("");
-    html += '<div class="maxed" id="maxed"><span class="m-badge">🏆</span><div><h3>Full-Stack AI Wizard — every skill unlocked.</h3><p>You went from pasting prompts to shipping AI in production. Now go build something only you could.</p></div></div>';
     document.getElementById("treeView").innerHTML = html;
     var els = document.querySelectorAll("#treeView .reveal");
     if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -652,36 +585,21 @@
     this.textContent = allOpen ? "collapse all" : "expand all";
   });
 
-  // ---- toast ----
-  function toast(msg, emoji) {
-    var t = document.getElementById("toast"); if (!t) return;
-    t.innerHTML = (emoji ? '<span class="t-emoji">' + emoji + '</span>' : '') + esc(msg);
-    t.classList.add("show");
-    clearTimeout(t._t); t._t = setTimeout(function () { t.classList.remove("show"); }, 3000);
-  }
-
-  // ---- completion / XP ----
+  // ---- completion tracking ----
   function toggleSkill(n) {
     if (done[n]) delete done[n]; else done[n] = 1;
     saveDone();
     var rs = treeView.querySelector('.skill[data-n="' + n + '"]');
     if (rs) { rs.classList.toggle("learned", !!done[n]); var ob = rs.querySelector(".orb"); if (ob) ob.setAttribute("aria-pressed", done[n] ? "true" : "false"); }
     var ms = stopCol.querySelector('.mm-stop[data-n="' + n + '"]'); if (ms) ms.classList.toggle("done", !!done[n]);
-    updateHUD();
-    var xp = xpCount(), lvl = rankFor(xp).lvl;
-    if (lvl > lastLevel) { toast("Ranked up to " + rankFor(xp).title + "!", "⚡"); }
-    lastLevel = lvl;
-    document.getElementById("maxed").classList.toggle("show", xp === TOTAL);
-    if (xp === TOTAL) toast("Max rank — Full-Stack AI Wizard 🏆", "🏆");
+    updateProgress();
   }
   document.getElementById("preset").addEventListener("click", function () {
     if (!confirm("Reset all progress? This clears every skill you've marked learned.")) return;
     done = {}; saveDone();
     [].forEach.call(treeView.querySelectorAll(".skill.learned"), function (s) { s.classList.remove("learned"); var ob = s.querySelector(".orb"); if (ob) ob.setAttribute("aria-pressed", "false"); });
     [].forEach.call(stopCol.querySelectorAll(".mm-stop.done"), function (s) { s.classList.remove("done"); });
-    document.getElementById("maxed").classList.remove("show");
-    lastLevel = 1;
-    updateHUD();
+    updateProgress();
   });
 
   // ---- next-up nudge ----
@@ -693,22 +611,7 @@
     el.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
-  // ---- share my rank ----
-  var SHARE_URL = "https://plumbgoat.github.io/ai-dev-roadmap/";
-  document.getElementById("pshare").addEventListener("click", function () {
-    var xp = xpCount(), r = rankFor(xp);
-    var text = xp === 0
-      ? "Starting the AI-Augmented Developer skill tree — 36 skills from how the model works to shipping AI in production. 🌳"
-      : "I'm rank “" + r.title + "” (Lvl " + r.lvl + ") on the AI-Augmented Developer skill tree — " + xp + "/" + TOTAL + " skills learned. 🌳";
-    var intent = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(SHARE_URL);
-    window.open(intent, "_blank", "noopener");
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(SHARE_URL).then(function () { toast("Link copied — opening X to share your rank", "↗"); }, function () { toast("Opening X to share your rank", "↗"); });
-    } else { toast("Opening X to share your rank", "↗"); }
-  });
-
-  updateHUD();
-  document.getElementById("maxed").classList.toggle("show", xpCount() === TOTAL);
+  updateProgress();
 </script>
 <script>
   (function () {

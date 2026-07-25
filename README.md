@@ -2,11 +2,11 @@
 
 **Level up from "I use AI sometimes" to building AI into production.**
 
-A gamified skill tree of **36 skills across 6 tiers** — from how the model
-works under the hood to shipping AI in real products. Learn a skill, earn XP,
-climb the ranks. Every skill has why it matters, a "you've got it when" mastery
-check, the pitfall to dodge, and hand-picked resources — and every tier ends in
-a hands-on project you actually build.
+A structured skill tree of **36 skills across 6 tiers** — from how the model
+works under the hood to shipping AI in real products. Every skill has why it
+matters, a "you've got it when" mastery check, the pitfall to dodge, and
+hand-picked resources — and every tier ends in a hands-on project you
+actually build.
 
 📘 **[Open the course curriculum →](https://plumbgoat.github.io/ai-dev-roadmap/)**
 
@@ -27,9 +27,8 @@ Six tiers, each a level, each ending in a project:
 the same 36 skills, 6 tiers, and hands-on projects as the curriculum above,
 but as a self-directed skill tree and mind map instead of a fixed syllabus:
 
-- **🌳 Skill tree** — click an orb to mark a skill learned; earn XP, watch your
-  rank evolve from *Prompt-Curious* to *Full-Stack AI Wizard*. Progress is
-  saved in your browser.
+- **🌳 Skill tree** — click an orb to mark a skill learned and track your
+  progress through the six tiers. Progress is saved in your browser.
 - **🧠 Mind map** — the same 36 skills as an interactive branching map; click a
   branch to explore its skills, and click a skill to mark it learned.
 
