@@ -20,6 +20,26 @@
 <meta name="twitter:title" content="The AI-Augmented Developer">
 <meta name="twitter:description" content="36 skills, 6 tiers, a hands-on project per tier — as a skill tree, a mind map, or a structured course curriculum.">
 <meta name="twitter:image" content="https://plumbgoat.github.io/ai-dev-roadmap/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "The AI-Augmented Developer",
+  "description": "36 skills across 6 tiers, from how LLMs work to shipping AI into production. Explore as a self-directed skill tree, an interactive mind map, or a structured two-track course curriculum.",
+  "url": "https://plumbgoat.github.io/ai-dev-roadmap/",
+  "isAccessibleForFree": true,
+  "provider": {
+    "@type": "Organization",
+    "name": "plumbgoat",
+    "sameAs": "https://github.com/plumbgoat"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT6H"
+  }
+}
+</script>
 <style>
   :root {
     --paper:#F7F4EE;--paper-2:#EFEAE0;--ink:#2A2620;--muted:#736C5E;--line:#DDD5C4;--card:#FFFDF9;
@@ -155,7 +175,7 @@
   .tier:last-child::before { bottom: auto; height: 46px; }
   .tier-head { position: relative; display: flex; align-items: center; gap: 0.9rem; margin: 1.8rem 0 0.9rem; }
   .tier-head::before { content: ""; position: absolute; left: 17px; top: 50%; width: 18px; height: 2px; background: var(--tc-trunk); }
-  .tier-badge { flex: 0 0 auto; position: relative; z-index: 2; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 13px; background: var(--tc-soft); border: 1.5px solid var(--tc-line); box-shadow: 0 0 0 4px var(--paper), 0 0 22px -8px var(--tc); line-height: 1; transition: all 0.3s ease; }
+  .tier-badge { flex: 0 0 auto; position: relative; z-index: 2; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 13px; background: color-mix(in srgb, var(--tc) 13%, var(--paper)); border: 1.5px solid var(--tc-line); box-shadow: 0 0 0 4px var(--paper), 0 0 22px -8px var(--tc); line-height: 1; transition: all 0.3s ease; }
   .tier-badge .l { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.12em; color: var(--tc-ink); }
   .tier-badge .n { font-size: 1.2rem; font-weight: 800; color: var(--tc-ink); }
   .tier-title { flex: 1 1 auto; min-width: 0; }
@@ -165,7 +185,7 @@
 
   .skill { display: grid; grid-template-columns: 52px 1fr; gap: 0 1rem; position: relative; padding: 0.4rem 0; }
   .skill::before { content: ""; position: absolute; left: 25px; top: 50%; width: 27px; height: 2px; background: var(--tc-line); }
-  .orb { position: relative; z-index: 1; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 0.9rem; color: var(--tc-ink); background: linear-gradient(160deg, var(--card), var(--tc-soft)); border: 2px solid var(--tc-line); box-shadow: 0 0 0 4px var(--paper); cursor: pointer; user-select: none; align-self: center; transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+  .orb { position: relative; z-index: 1; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 0.9rem; color: var(--tc-ink); background: linear-gradient(160deg, var(--card), color-mix(in srgb, var(--tc) 13%, var(--card))); border: 2px solid var(--tc-line); box-shadow: 0 0 0 4px var(--paper); cursor: pointer; user-select: none; align-self: center; transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
   .orb:hover { transform: scale(1.08); border-color: var(--tc); box-shadow: 0 0 0 4px var(--paper), 0 0 16px -4px var(--tc); }
   .orb:focus-visible { outline: 2px solid var(--tc); outline-offset: 3px; }
   .skill.learned .orb { background: var(--accent); border-color: var(--accent); color: #fff; }
